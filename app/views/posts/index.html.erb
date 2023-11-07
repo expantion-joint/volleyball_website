@@ -1,0 +1,55 @@
+<div class="show-button-container">
+  <div class="show-button">
+    <%= link_to "イベント一覧に戻る", index_post_path, class: "show-button-text"%>
+  </div>
+</div>
+
+<!-- body -->
+<div class="gp-index-body">
+
+  <h2 class="gp-index-heading-2">イベント一覧</h2>
+
+  <% i = 0 %>
+  <% @posts.each do |post| %>
+    <% remaining = @remaining_array[i] %>
+
+    <% if post.posting_start_time < Time.zone.now %>
+      <% if post.posting_end_time > Time.zone.now %>
+
+        <div class="gp-line"></div>
+        
+        <a class="gp-index-item-container" href="<%= show_post_path(post) %>">
+          <div class="item-image-container">
+            <% if post.image.attached? %>
+              <%= image_tag(post.image, class: "item-image") %>
+            <% else %>
+              <%= image_tag 'sample_no_image.jpg' ,class: "item-image" %>
+            <% end %>
+          </div>
+
+          <span class="gp-text-bold gp-text-black"><%= post.title %></span>
+          <span class="gp-text-black">開催日：<%= l post.event_date %></span>
+          <span class="gp-text-black">開催場所：<%= post.venue %></span>
+          <span class="gp-text-black">参加費：<%= post.price %></span>
+
+          <div class="gp-flex-container">
+            <% if remaining == 0 %>
+              <span class="gp-text-black">SOLD&nbsp;OUT</span>
+            <% else %>
+              <span class="gp-text-black">募集人数：<%= remaining %></span>
+              <% remaining_days = (post.posting_end_time - Time.zone.now).to_i / 1.day %>
+              <% if remaining_days.floor == 0 %>
+                <span class="gp-text-black">（本日<%= post.posting_end_time.strftime("%H時%M分") %>まで）</span>
+              <% else %>
+                <span class="gp-text-black">（締切まで<%= remaining_days.floor %>日）</span>
+              <% end %>
+            <% end %>
+          </div>
+
+        </a>
+      <% end %>
+    <% end %>
+    
+  <% end %>
+  <div class="gp-line"></div>
+</div>

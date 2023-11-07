@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  title: MyString
+  event_date: 2023-11-07
+  venue: MyString
+  event_start_time: 2023-11-07 08:15:15
+  event_end_time: 2023-11-07 08:15:15
+  posting_start_time: 2023-11-07 08:15:15
+  posting_end_time: 2023-11-07 08:15:15
+  address: MyString
+  recruitment_numbers: 1
+  content: MyText
+
+two:
+  user: two
+  title: MyString
+  event_date: 2023-11-07
+  venue: MyString
+  event_start_time: 2023-11-07 08:15:15
+  event_end_time: 2023-11-07 08:15:15
+  posting_start_time: 2023-11-07 08:15:15
+  posting_end_time: 2023-11-07 08:15:15
+  address: MyString
+  recruitment_numbers: 1
+  content: MyText
