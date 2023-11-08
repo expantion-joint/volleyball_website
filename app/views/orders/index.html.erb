@@ -7,14 +7,11 @@
 <!-- body -->
 <div class="gp-index-body">
 
-  <h2 class="gp-index-heading-2">イベント一覧</h2>
+  <h2 class="gp-index-heading-2">予約イベント一覧</h2>
 
   <% i = 0 %>
   <% @posts.each do |post| %>
-    <% remaining = @remaining_array[i] %>
-
-    <% if post.posting_start_time < Time.zone.now %>
-      <% if post.posting_end_time > Time.zone.now %>
+    <% order = @orders[i] %>
 
         <div class="gp-line"></div>
         
@@ -31,26 +28,12 @@
           <span class="gp-text-black">開催日時：<%= l post.event_date %><%= post.event_start_time.strftime("%H時%M分") %>〜<%= post.event_end_time.strftime("%H時%M分") %></span>
           <span class="gp-text-black">開催場所：<%= post.venue %></span>
           <span class="gp-text-black">競技：<%= post.category %></span>
-          <span class="gp-text-black">参加費：<%= post.price %>円</span>
-
-          <div class="gp-flex-container">
-            <% if remaining == 0 %>
-              <span class="gp-text-black">SOLD&nbsp;OUT</span>
-            <% else %>
-              <span class="gp-text-black">募集人数：<%= remaining %></span>
-              <% remaining_days = (post.posting_end_time - Time.zone.now).to_i / 1.day %>
-              <% if remaining_days.floor == 0 %>
-                <span class="gp-text-black">（本日<%= post.posting_end_time.strftime("%H時%M分") %>まで）</span>
-              <% else %>
-                <span class="gp-text-black">（締切まで<%= remaining_days.floor %>日）</span>
-              <% end %>
-            <% end %>
-          </div>
-
+          <span class="gp-text-black">参加費：<%= post.price %>円&nbsp;*&nbsp;<%= order.number_of_orders %>名</span>
+          <span class="gp-text-black">予約人数：<%= order.number_of_orders %>名</span>
         </a>
       <% end %>
     <% end %>
-    <% i = i + 1 %>
+  <% i = i + 1 %>
   <% end %>
   <div class="gp-line"></div>
 </div>

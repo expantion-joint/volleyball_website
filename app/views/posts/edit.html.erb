@@ -1,0 +1,110 @@
+<div class="show-button-container">
+  <div class="show-button">
+    <%= link_to "イベント一覧に戻る", index_post_path, class: "show-button-text"%>
+  </div>
+</div>
+
+<div class="post-form-body">
+  <div class="post-form-container">
+    <h2>編集画面</h2>
+    <%= form_with(url: update_post_path, model: @post, local: true, method: :post, html: { class: 'post-form' }  ) do |f| %>
+      
+      <% if @post.errors.any? %>
+        <ul>
+          <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <div class="form-group image-upload">
+        <%= f.label "画像", class: 'form-label' %>
+        <div class="image-preview" id="imagePreview">
+          <img src="<%= @post.image.attached? ? url_for(@post.image) : "" %>" alt="Image Preview" class="image-preview__image <%= @post.image.attached? ? "-block" : "" %>">
+          <span class="image-preview__default-text <%= @post.image.attached? ? "-none" : "" %>">No image uploaded</span>
+        </div>
+        <%= f.file_field :image, class: 'form-control-file', id: 'imageUpload' %>
+      </div>
+        
+      <div class="form-group">
+        <%= f.label "タイトル", class: 'form-label' %>
+        <%= f.text_field :title, value: @post.title, class: 'form-control' %>
+      </div>
+        
+      <div class="form-group">
+        <%= f.label "競技名", class: 'form-label'  %>
+        <% choices = [["バレーボール", "バレーボール"], ["バトミントン", "バトミントン"], ["フットサル", "フットサル"], ["ハンドボール", "ハンドボール"], ["卓球", "卓球"], ["ドッジボール", "ドッジボール"], ["野球", "野球"], ["サッカー", "サッカー"], ["テニス", "テニス"], ["その他", "その他"]] %>
+        <%= f.select :category, options_for_select(choices, @post.category), {include_blank: "選択して下さい"}, {class: "form-select-control"} %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "開催日", class: 'form-label' %>
+        <div class="form-side-by-side-group">
+          <%= f.date_select(:event_date, {value: @post.event_date}, {class: "form-date_select-control"}) %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "開始時間", class: 'form-label' %>
+        <div class="form-side-by-side-group">
+          <%= f.time_select(:event_start_time, {value: @post.event_start_time}, {class: "form-date_select-control"}) %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "終了時間", class: 'form-label' %>
+        <div class="form-side-by-side-group">
+          <%= f.time_select(:event_end_time, {value: @post.event_end_time}, {class: "form-date_select-control"})  %>
+        </div>
+      </div>
+        
+      <div class="form-group">
+        <%= f.label "開催場所", class: 'form-label' %>
+        <%= f.text_field :venue, value: @post.venue, class: 'form-control' %>
+      </div>
+        
+      <div class="form-group">
+        <%= f.label "募集人数", class: 'form-label' %>
+        <div class="form-side-by-side-group">
+          <%= f.text_field :recruitment_numbers, value: @post.recruitment_numbers, min: 1, class: 'form-number-control' %>
+          <span class='form-label'>名</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "価格", class: 'form-label' %>
+        <div class="form-side-by-side-group">
+          <%= f.text_field :start_price, value: @post.start_price, class: 'form-number-control' %>
+          <span class='form-label'>円</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "内容", class: 'form-label' %>
+        <%= f.text_area :content, value: @post.content, class: 'form-text-control' %>
+      </div>
+        
+      <div class="form-group">
+        <%= f.label "公開日時", class: 'form-label' %>
+        <div class="form-side-by-side-group">
+          <%= f.datetime_select(:posting_start_time, {value: @post.posting_start_time}, {class: "form-date_select-control"}) %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "公開終了日時", class: 'form-label' %>
+        <div class="form-side-by-side-group">
+          <%= f.datetime_select(:posting_end_time, {value: @post.posting_end_time}, {class: "form-date_select-control"})  %>
+        </div>
+      </div>
+
+      <div class="button-group">
+        <% if @post.posting_start_time > Time.zone.now %>
+          <%= link_to '投稿を削除する', destroy_post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "inquiries-button inquiries-button-text" %>
+        <% end %>
+        <%= f.submit '更新する', class: 'inquiries-orange-button inquiries-button-text' %>
+      </div>
+      
+    <% end %>
+  </div>
+</div>

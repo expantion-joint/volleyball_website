@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
+  # post
   get '/', to: 'posts#top', as: 'top_post'
   get 'posts/index', to: 'posts#index', as: 'index_post'
   get 'posts/new', to: 'posts#new', as: 'new_post'
@@ -13,5 +14,17 @@ Rails.application.routes.draw do
   get 'posts/edit/:id', to: 'posts#edit', as: 'edit_post' # post.id
   post 'posts/edit/:id', to: 'posts#update', as: 'update_post' # post.id
   delete 'posts/destroy/:id', to: 'posts#destroy', as: 'destroy_post' # post.id
+
+  # order
+  get 'orders/index', to: 'orders#index', as: 'index_order'
+  post 'orders/new', to: 'orders#create', as: 'create_order'
+
+  # contributor
+  get 'contributors/index', to: 'contributors#index', as: 'index_contributor'
+  get 'contributors/new', to: 'contributors#new', as: 'new_contributor'
+  post 'contributors/new', to: 'contributors#create', as: 'create_contributor'
+  get 'contributors/edit', to: 'contributors#edit', as: 'edit_contributor'
+  post 'contributors/edit', to: 'contributors#update', as: 'update_contributor'
+  delete 'contributors/destroy/:id', to: 'contributors#destroy', as: 'destroy_contributor' # contributor.id
 
 end
