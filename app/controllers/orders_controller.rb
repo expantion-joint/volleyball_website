@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @post = Post.find(@order.post_id)
+    @post = Post.find(params[:id])
     @orders = Order.all
     total = 0
 
@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
     if @remaining < 0
       redirect_to show_post_path(params[:id]), notice: '予約人数が募集人数を超えています'
     else
-      if @post.save
+      if @order.save
         redirect_to index_post_path, notice: '予約しました'
       else
         render :new, status: :unprocessable_entity

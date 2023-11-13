@@ -1,7 +1,5 @@
 class Post < ApplicationRecord
-  belongs_to :user
-
-  validates :sex, presence: true
+  belongs_to :contributor
 
   validates :title, presence: true
   validates :event_date, presence: true

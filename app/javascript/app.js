@@ -63,3 +63,17 @@ document.addEventListener("turbo:load", function() {
     });
   });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  // 検証用
+  console.log('---- app open ----');
+  openDatabase(function() {
+    const imagePreview = document.getElementById('imageComfirmPreview');
+    if (imagePreview) {
+      loadImage('previewImage', function(imageData) {
+        console.log(imageData);
+        imagePreview.setAttribute('src', imageData);
+      });
+    }
+  });
+});

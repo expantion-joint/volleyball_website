@@ -21,15 +21,11 @@
   background: #f1f9fe;
 }
   
-.index-body-background-auction {
-  background: #ffffee;
-}
-  
 .index-container {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  width: 80%;
+  width: 95%;
   padding: 10px;
   margin-bottom: 30px;
   gap: 10px;
@@ -67,54 +63,6 @@
     height: 100%;
     border-radius: 5px;
     border: 1px solid #000;
-  }
-  
-  .index-item-image-festival_name {
-    position: absolute;   /*絶対配置*/
-    top: 5px;
-    left: 5px;
-    max-width: 185px;
-    height: auto;
-    padding : 2px 4px;
-    background: #000000b5;
-    color: #ffffff;
-    overflow: hidden;        /* はみ出した部分を隠す */
-    text-overflow: ellipsis; /* はみ出した部分を省略記号で表示 */
-    font-size: 12px;
-    font-weight: 600;
-    white-space: nowrap;
-    border-radius: 5px;
-    z-index: 2;
-  }
-  
-  .index-item-image-price {
-    position: absolute;   /*絶対配置*/
-    bottom: 5px;
-    right: 5px;
-    max-width:190px;
-    height: auto;
-    padding : 2px 4px;
-    background: #ff4e4ef2;
-    color: #ffffff;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: 600;
-    white-space: nowrap;
-    z-index: 2;
-  }
-  
-  .index-item-image-remaining_days {
-    position: absolute;   /*絶対配置*/
-    bottom: 5px;
-    left: 5px;
-    max-width:190px;
-    height: auto;
-    padding : 2px 4px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: 600;
-    white-space: nowrap;
-    z-index: 2;
   }
   
   .remaining_days-color-before {
@@ -309,8 +257,8 @@
   }
   
   .show-image-container {
-    width: 180px;
-    height: 180px;
+    width: 198px;
+    height: 198px;
   }
   
   .show-image {
@@ -326,7 +274,7 @@
   
   .th-post-show{
     width: 80px;
-    padding : 4px 4px;
+    padding : 2px 4px;
     color:rgb(0, 0, 0);
     background-color: #d8d8d8;
     font-size: 14px;
@@ -337,7 +285,7 @@
   .td-post-show{
     width: calc(100% - 80px);
     min-width: 300px;
-    padding : 4px 4px;
+    padding : 2px 4px;
     color:rgb(0, 0, 0);
     background-color: #f0f0f0;
     font-size: 14px;
@@ -352,12 +300,12 @@
     align-items: center;
     width: 80%;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     background: #ffffff;
     flex-wrap: wrap;
   }
   
-  .show-heading-auction {
+  .show-heading {
     display: inline-block;
     position: relative;
     padding: 0 3.0em;
@@ -365,8 +313,8 @@
     font-weight: 700;
   }
   
-  .show-heading-auction::before,
-  .show-heading-auction::after {
+  .show-heading::before,
+  .show-heading::after {
     content: '';
     display: inline-block;
     position: absolute;
@@ -376,11 +324,11 @@
     background-color: #ffc001;
   }
   
-  .show-heading-auction::before {
+  .show-heading::before {
     left: 0;
   }
   
-  .show-heading-auction::after {
+  .show-heading::after {
     right: 0;
   }
   
@@ -400,20 +348,6 @@
     margin-bottom: 10px;
   }
   
-  .show-price {
-    color: #ff3a3a;
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 5px;
-  }
-  
-  .show-time {
-    color: #000000;
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 5px;
-  }
-  
   .show-text {
     color: #484848;
     font-size: 14px;
@@ -427,7 +361,7 @@
     border-radius: 5px;
     background: #FF8A00;
     border: none;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     cursor: pointer;
   }
   

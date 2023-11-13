@@ -17,12 +17,13 @@ Rails.application.routes.draw do
 
   # order
   get 'orders/index', to: 'orders#index', as: 'index_order'
-  post 'orders/new', to: 'orders#create', as: 'create_order'
+  post 'orders/new/:id', to: 'orders#create', as: 'create_order' # post.id
 
   # contributor
   get 'contributors/index', to: 'contributors#index', as: 'index_contributor'
   get 'contributors/new', to: 'contributors#new', as: 'new_contributor'
   post 'contributors/new', to: 'contributors#create', as: 'create_contributor'
+  get 'contributors/show/:id', to: 'contributors#show', as: 'show_contributor' # post.id
   get 'contributors/edit', to: 'contributors#edit', as: 'edit_contributor'
   post 'contributors/edit', to: 'contributors#update', as: 'update_contributor'
   delete 'contributors/destroy/:id', to: 'contributors#destroy', as: 'destroy_contributor' # contributor.id

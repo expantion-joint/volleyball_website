@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @contributor = Contributor.find(user_id: current_user.id)
+    @contributor = Contributor.find_by(user_id: current_user.id)
     @post.contributor_id = @contributor.id
    
     if params[:post][:image]
@@ -92,7 +92,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:title, :event_date, :venue, :event_start_time, :event_end_time, :posting_start_time, :posting_end_time, :address, :recruitment_numbers, :content, :price, :image)
+    params.require(:post).permit(:title, :event_date, :venue, :event_start_time, :event_end_time, :posting_start_time, :posting_end_time, :address, :recruitment_numbers, :content, :price, :category, :image)
   end
   
 end
