@@ -1,13 +1,10 @@
-<div class="show-button-container">
-  <div class="show-button">
-    <%= link_to "イベント一覧に戻る", index_post_path, class: "show-button-text"%>
-  </div>
-  <div class="show-button">
-    <%= link_to "このイベントに関するお問い合わせ", index_post_path, class: "show-button-text"%>
+<div class="gp-back-to-index-container">
+  <div class="gp-back-to-index-button">
+    <%= link_to "イベント一覧に戻る", index_post_path, class: "gp-back-to-index-button-text"%>
   </div>
 </div>
 
-<div class="index-body">
+<div class="show-body">
   <div class="show-upper-container">
 
     <div class="show-image-container">
@@ -65,7 +62,7 @@
     </div>
 
     <!-- modal button -->
-    <button class="show-bid-button show-bid-button-text js-button" data-target="#modal<%= @post.id %>">予約する</button>
+    <button class="show-order-button show-order-button-text js-button" data-target="#modal<%= @post.id %>">予約する</button>
 
     <!-- modal -->
     <div id="modal<%= @post.id %>" class="modal js-modal">
@@ -80,7 +77,7 @@
             </div>
                         
             <div class="modal-button-container">
-              <%= f.submit "予約する" ,class: "modal-bid-button modal-button-text js-close-button" %>
+              <%= f.submit "予約する" ,class: "modal-order-button modal-button-text js-close-button" %>
               <button class="modal-close-button js-close-button">
                 <%= link_to "戻る", show_post_path, class: "modal-button-text" %>
               </button>

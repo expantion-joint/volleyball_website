@@ -6,18 +6,36 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="field">
-        <%= f.label :メールアドレス %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.label :氏名, class: "label"%>
+        <%= f.text_field :name, class:"device-input-itme" %>
       </div>
 
       <div class="field">
-        <%= f.label :パスワード %>
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%= f.label :メールアドレス, class: "label" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"device-input-itme" %>
       </div>
 
       <div class="field">
-        <%= f.label :パスワード（確認用） %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%= f.label :パスワード, class: "label" %>
+        <%= f.password_field :password, autocomplete: "new-password", class:"device-input-itme" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :パスワード（確認用）, class: "label" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"device-input-itme" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :性別, class: "label" %>
+        <%= f.select :sex, [["男性", "男性"], ["女性", "女性"], ["その他", "その他"]], {include_blank: "選択して下さい"}, {class: "device-input-itme-select"} %>
+        <!--f.select :保存先のカラム名, [["選択肢１", "実際にDBに保存させる内容"], ["選択肢２", "実際にDBに保存させる内容"]], include_blank: "選択して下さい"-->
+      </div>
+
+      <div class="field">
+        <%= f.label :生年月日, class: "label" %>
+        <div class="gp-flex-container">
+          <%= f.date_select :birthday, {start_year: (Time.now.year - 100), end_year: (Time.now.year)}, {class: "device-input-itme-date"} %>
+        </div>
       </div>
 
       <div class="actions">

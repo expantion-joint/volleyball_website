@@ -11,6 +11,8 @@
       padding: 30px 20px 20px;
       width: 500px;
       max-width: 90%;
+      margin-top: 10px;
+      margin-bottom: 30px;
   
       .error-explanation {
         color: #721c24;
@@ -47,6 +49,25 @@
           font-weight: bold;
           margin-bottom: 5px;
         }
+        
+        .device-input-itme {
+          width: calc(100% - 20px);
+        } 
+
+        .device-input-itme-select {
+          width: 150px;
+          height: 40px;
+          border-radius: 5px;
+          border: 1px solid #ddd;
+        } 
+
+        .device-input-itme-date {
+          width: 80px;
+          height: 40px;
+          border-radius: 5px;
+          border: 1px solid #ddd;
+          margin-right: 5px;
+        } 
   
         input {
           width: 100%;

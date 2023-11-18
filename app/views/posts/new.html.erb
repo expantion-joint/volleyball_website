@@ -1,12 +1,12 @@
-<div class="show-button-container">
-  <div class="show-button">
-    <%= link_to "イベント一覧に戻る", index_post_path, class: "show-button-text"%>
+<div class="gp-back-to-index-container">
+  <div class="gp-back-to-index-button">
+    <%= link_to "イベント一覧に戻る", index_post_path, class: "gp-back-to-index-button-text"%>
   </div>
 </div>
 
 <div class="post-form-body">
   <div class="post-form-container">
-    <h2>投稿画面</h2>
+    <h2>投稿内容を入力してください</h2>
     <%= form_with(url: create_post_path, model: @post, local: true, method: :post, html: { class: 'post-form' }  ) do |f| %>
       
       <% if @post.errors.any? %>
@@ -104,7 +104,7 @@
       </div>
 
       <div class="button-group">
-        <%= f.submit '投稿する', class: 'inquiries-button inquiries-button-text' %>
+        <%= f.submit '投稿する', class: 'gp-button gp-background-blue gp-button-text' %>
       </div>
       
     <% end %>

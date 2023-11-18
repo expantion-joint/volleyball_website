@@ -6,12 +6,12 @@
       <%= render "devise/shared/error_messages", resource: resource %>
       <div class="field">
         <%= f.label :メールアドレス, class: "label" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"device-input-itme"  %>
       </div>
 
       <div class="field">
         <%= f.label :パスワード, class: "label" %>
-        <%= f.password_field :password, autocomplete: "current-password" %>
+        <%= f.password_field :password, autocomplete: "current-password", class:"device-input-itme"  %>
       </div>
 
       <% if devise_mapping.rememberable? %>
