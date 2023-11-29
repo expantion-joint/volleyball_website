@@ -1,0 +1,28 @@
+<div class="gp-back-to-index-container">
+  <div class="gp-back-to-index-button">
+    <%= link_to "イベント詳細に戻る", show_post_path(params[:id]), class: "gp-back-to-index-button-text"%>
+  </div>
+</div>
+
+<div class="show-body">
+  <div class="show-upper-container">
+
+    <div class="show-image-container">
+      <% if @contributor.image.attached? %>
+        <%= image_tag(@contributor.image, class: "show-image") %>
+      <% else %>
+        <%= image_tag 'sample_no_image.jpg' ,class: "show-image" %>
+      <% end %>
+    </div>
+  
+  </div>
+   
+  <div class="show-lower-container">
+    <span class="show-heading">&nbsp;<%= @contributor.name%>&nbsp;さんの自己紹介&nbsp;</span>
+    
+    <div class="show-detail-container">
+      <span> <%= safe_join(@contributor.self_introduction.split("\n"),tag(:br))%></span>
+    </div>
+
+  </div>
+</div>

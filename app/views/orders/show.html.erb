@@ -1,0 +1,99 @@
+<div class="gp-back-to-index-container">
+  <div class="gp-back-to-index-button">
+    <%= link_to "イベント一覧に戻る", index_post_path, class: "gp-back-to-index-button-text"%>
+  </div>
+</div>
+
+<div class="show-body">
+  <div class="show-upper-container">
+
+    <div class="show-image-container">
+      <% if @post.image.attached? %>
+        <%= image_tag(@post.image, class: "show-image") %>
+      <% else %>
+        <%= image_tag 'sample_no_image.jpg' ,class: "show-image" %>
+      <% end %>
+    </div>
+
+    <table>
+      <tr>
+        <th class=th-post-show>イベント名</th> <td class=td-post-show> <%= @post.title %></td>
+      </tr>
+
+      <tr>
+        <th class=th-post-show>開催日</th> <td class=td-post-show> <%= @post.event_date.strftime("%Y年%m月%d日") %> </td>
+      </tr>
+
+      <tr>
+        <th class=th-post-show>時間</th> <td class=td-post-show> <%= @post.event_start_time.strftime("%H時%M分") %>〜<%= @post.event_end_time.strftime("%H時%M分") %> </td>
+      </tr>
+
+      <tr>
+        <th class=th-post-show>場所</th> <td class=td-post-show> <%= @post.venue %> </td>
+      </tr>
+
+      <tr>
+        <th class=th-post-show>住所</th> <td class=td-post-show> <%= @post.address %> </td>
+      </tr>
+
+      <tr>
+        <th class=th-post-show>競技</th> <td class=td-post-show> <%= @post.category %> </td>
+      </tr>
+
+      <tr>
+        <th class=th-post-show>募集人数</th> <td class=td-post-show> <%= @post.recruitment_numbers %>名（残り<%= @remaining %>名）</td>
+      </tr>
+
+      <tr>
+        <th class=th-post-show>予約人数</th> <td class=td-post-show-red> <%= @order.number_of_orders %>名</td>
+      </tr>
+
+      <tr>
+        <th class=th-post-show>参加費</th> <td class=td-post-show> <%= @post.price %>円</td>
+      </tr>
+
+      <tr>
+        <th class=th-post-show>投稿者</th ><td class=td-post-show> <%= link_to @contributor.name, show_contributor_path(params[:id]) %> </td>
+      </tr>
+
+    </table>
+  </div>
+   
+  <div class="show-lower-container">
+    <span class="show-heading">&nbsp;内容（よくご確認ください）</span>
+    
+    <div class="show-detail-container">
+      <span> <%= safe_join(@post.content.split("\n"),tag(:br))%></span>
+    </div>
+
+    <!-- modal button -->
+    <button class="show-order-button show-order-button-text js-button" data-target="#modal<%= @post.id %>">予約人数を変更する</button>
+
+    <!-- modal -->
+    <div id="modal<%= @post.id %>" class="modal js-modal">
+      <div class="modal-layer">
+        <div class="modal-container">          
+        
+          <%= form_with(url: update_order_path(@post.id), model: @order, local: true, method: :post, html: { class: "post-form" } ) do |f| %>            
+            
+            <div class="modal-field-container">
+              <%= f.label "予約人数を入力してください", class: "modal-text" %>
+              <span class=modal-text><%= f.text_field :number_of_orders, min: 1, max: @remaining, required: true, class: "modal-field" %>名</span>
+            </div>
+                        
+            <div class="modal-button-container">
+              <%= f.submit "変更する" ,class: "modal-order-button modal-button-text js-close-button" %>
+              <button class="modal-close-button js-close-button">
+                <%= link_to "戻る", show_order_path(@post.id), class: "modal-button-text" %>
+              </button>
+            </div>
+                      
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <span class="show-text">予約終了日時：<%= @post.posting_end_time.strftime("%Y年%m月%d日%H時%M分") %> </span>
+
+  </div>
+</div>

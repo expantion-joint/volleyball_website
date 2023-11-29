@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  # devise
+  devise_for :users, controllers: {
+    registrations: 'users/registrations', # edit_user_registration_path
+  }
 
   # post
   get '/', to: 'posts#top', as: 'top_post'
@@ -18,6 +22,8 @@ Rails.application.routes.draw do
   # order
   get 'orders/index', to: 'orders#index', as: 'index_order'
   post 'orders/new/:id', to: 'orders#create', as: 'create_order' # post.id
+  get 'orders/show/:id', to: 'orders#show', as: 'show_order' # post.id
+  post 'orders/edit/:id', to: 'orders#update', as: 'update_order' # post.id
 
   # contributor
   get 'contributors/index', to: 'contributors#index', as: 'index_contributor'

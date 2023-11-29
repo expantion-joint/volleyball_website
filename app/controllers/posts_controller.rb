@@ -58,7 +58,7 @@ class PostsController < ApplicationController
     end
     
     if @post.update(post_params)
-      redirect_to index_post_path, notice: '更新しました'
+      redirect_to index_contributor_path, notice: '更新しました'
     else
       render :edit, status: :unprocessable_entity
     end

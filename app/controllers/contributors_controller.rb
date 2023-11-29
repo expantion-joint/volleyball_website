@@ -52,6 +52,12 @@ class ContributorsController < ApplicationController
     end
   end
 
+  def show
+    @post = Post.find(params[:id])
+    @contributor = Contributor.find(@post.contributor_id)
+    render :show
+  end
+
   private
   def contributor_params
     params.require(:contributor).permit(:name, :self_introduction, :image).merge(user_id: current_user.id)

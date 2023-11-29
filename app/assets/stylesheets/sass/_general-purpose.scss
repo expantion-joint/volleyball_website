@@ -45,6 +45,22 @@
   z-index: 2;
 }
 
+.gp-index-image-booking_number {
+  position: absolute;   /*絶対配置*/
+  bottom: 5px;
+  right: 5px;
+  max-width:190px;
+  height: auto;
+  padding : 2px 4px;
+  background: #4e6efff2;
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  z-index: 2;
+}
+
 .gp-index-item-image-remaining_days {
   position: absolute;   /*絶対配置*/
   bottom: -22px;
@@ -163,6 +179,10 @@
 
 .gp-background-blue {
   background: #3566e5;
+}
+
+.gp-background-orange {
+  background: #FF8A00;
 }
 
 .gp-back-to-index-container {
