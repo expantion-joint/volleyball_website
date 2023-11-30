@@ -1,17 +1,18 @@
 /* Hamburger Menu */
 .custom-navbar {
     background-color: #fff;
-    height: 80px;
+    height: 70px;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 999;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.25);
   }
   
   #menuToggle {
     position: relative;
-    top: 30px;
-    left: 30px;
+    top: 25px;
+    left: calc(100% - 70px);   // 変更(30px → calc(100% - 70px))
     z-index: 1;
     user-select: none;
   }
@@ -67,25 +68,25 @@
     background: #232323;
   }
   
-  #menuToggle input:checked ~ span:nth-last-child(3) {
+  #menuToggle input:checked ~ span:nth-last-child(4) {
     opacity: 0;
     transform: rotate(0deg) scale(0.2, 0.2);
   }
   
-  #menuToggle input:checked ~ span:nth-last-child(2) {
+  #menuToggle input:checked ~ span:nth-last-child(3) {
     transform: rotate(-45deg) translate(-1px, 0px);
   }
   
   #menu {
     position: absolute;
     width: 300px;
-    margin: -100px 0 0 -50px;
-    padding: 125px 50px 50px;
+    margin: -100px 0 0 -150px;      // 変更(-50px → -150px)
+    padding: 125px 30px 30px;       // 変更
     background: #dbdbdb;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     transform-origin: 0 0;
-    transform: translate(-100%, 0);
+    transform: translate(100%, 0);  // 変更(-100% → 100%)
   
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
   }
@@ -98,3 +99,8 @@
   #menuToggle input:checked ~ ul {
     transform: none;
   }
+
+.font-menu {
+  margin-top: -4px;
+  font-size: 13px;
+}

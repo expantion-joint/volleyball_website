@@ -377,20 +377,31 @@
   width: 100%;                     /* 親となる包含ブロックの幅に対するパーセント値で定義 */
 }
 
-.display_name-container{
+.name-container{
+  position: relative;
+  top: -22px;
+  left: calc(100% - 175px);
   display: flex;
-  flex-direction: column;
-  min-width: 80px;
-  width: 10%;
-  height: 35px;
-  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 13px;
+  font-size: 13px;
+  font-weight: 600;
   white-space: nowrap;
 }
 
-.display_name-text{
+.font-name{
   color: #000;
-  font-size: 14px;
+  font-size: 13px;
+  text-decoration: none;
   overflow: hidden;        /* はみ出した部分を隠す */
   text-overflow: ellipsis; /* はみ出した部分を省略記号で表示 */
 }
 
+.font-account{
+  position: relative;
+  font-size: 13px;
+  top: 10px;
+  left: calc(100% - 160px);
+}

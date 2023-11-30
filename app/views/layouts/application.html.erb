@@ -28,8 +28,9 @@
         <span></span>
         <span></span>
         <span></span>
+        <div class=font-menu>menu</div>
         <ul id="menu">
-          <!-- ここから追加-->
+
           <% if user_signed_in? %>
             <!-- ログインしている場合に表示されます -->
             <!-- user_signed_in? は device が提供している認証済みかを判定するメソッドです -->
@@ -64,9 +65,16 @@
               <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
             </li>
           <% end %>
-          <!-- ここまで-->
         </ul>
       </div>
+    
+      <% if user_signed_in? %>
+        <div class=font-account>account</div>
+        <div class=name-container>
+          <%= link_to current_user.name, edit_user_registration_path, class: "font-name" %>
+        </div>
+      <% end %>
+
     </nav>
 
     <!-- アラートメッセージ -->
