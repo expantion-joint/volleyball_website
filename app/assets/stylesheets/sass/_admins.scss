@@ -1,0 +1,68 @@
+.td-admins-user{
+  padding : 2px 4px;
+  color:rgb(0, 0, 0);
+  background-color: #f0f0f0;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: wrap;
+}
+
+.th-admins-user{
+  padding : 2px 4px;
+  color:rgb(0, 0, 0);
+  background-color: #d8d8d8;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: wrap;
+}
+
+.width-userid{
+  width: 20px;
+}
+
+.width-name{
+  width: calc((100% - 175px) * 0.3);
+}
+
+.width-email{
+  width: calc((100% - 175px) * 0.7);
+}
+
+.width-gender{
+  width: 50px;
+}
+
+.width-birthday{
+  width: 35px;
+}
+
+.width-type{
+  width: 40px;
+}
+
+.width-update{
+  width: 30px;
+}
+
+.admin-user-button-text {
+  color: #FFF;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.admin-user-button {
+  padding: 2px 5px;
+  align-items: center;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.admin-user-background-blue {
+  background: #FF8A00;
+}

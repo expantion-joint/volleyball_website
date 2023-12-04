@@ -21,6 +21,7 @@ class ContributorsController < ApplicationController
 
   def create
     @contributor = Contributor.new(contributor_params)
+    @user = User.find(@contributor.user_id)
    
     if params[:contributor][:image]
       @contributor.image.attach(params[:contributor][:image])
@@ -34,12 +35,12 @@ class ContributorsController < ApplicationController
   end
 
   def edit
-    @contributor = Contributor.find(user_id: current_user.id)
+    @contributor = Contributor.find_by(user_id: current_user.id)
     render :edit
   end
 
   def update
-    @contributor = Contributor.find(user_id: current_user.id)
+    @contributor = Contributor.find_by(user_id: current_user.id)
     
     if params[:contributor][:image]
       @contributor.image.attach(params[:contributor][:image])
@@ -56,6 +57,12 @@ class ContributorsController < ApplicationController
     @post = Post.find(params[:id])
     @contributor = Contributor.find(@post.contributor_id)
     render :show
+  end
+
+  def destroy
+    @contributor = Contributor.find(params[:id])
+    @contributor.destroy
+    redirect_to index_post_path, notice: '投稿者アカウントを削除しました'
   end
 
   private

@@ -1,6 +1,6 @@
-<div class="show-button-container">
-  <div class="show-button">
-    <%= link_to "イベント一覧に戻る", index_post_path, class: "show-button-text"%>
+<div class="gp-back-to-index-container">
+  <div class="gp-back-to-index-button">
+    <%= link_to "イベント一覧に戻る", index_post_path, class: "gp-back-to-index-button-text"%>
   </div>
 </div>
 
@@ -37,9 +37,11 @@
       </div>
       
       <div class="button-group">
-        <%= link_to '投稿者アカウント削除', destroy_contributor_path(@contributor), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "inquiries-button inquiries-button-text" %>
-        <%= f.submit '更新する', class: 'inquiries-orange-button inquiries-button-text' %>
+        <%= f.submit '更新する', class: 'gp-button gp-background-orange gp-button-text' %>
+        <%= link_to '投稿者アカウントを削除する', destroy_contributor_path(@contributor), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "gp-button gp-background-blue gp-button-text" %>
       </div>
+
+      
     
     <% end %>
   </div>

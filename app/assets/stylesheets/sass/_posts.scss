@@ -367,14 +367,26 @@
 }
 
 /* ====================== header ======================= */
-.logo {
-  width: 200px;                    /* 幅は200px */
-  height: auto;                    /* 高さは自動 */
-  margin-left: 5px;                /* 左のマージン */
+.logo-after-login {
+  position: relative;
+  top: -55px;
+  left: 10px;
+  width: 80px;
+  height: auto;
+  border: 1px solid #000;
+}
+
+.logo-before-login {
+  position: relative;
+  top: -27px;
+  left: 10px;
+  width: 80px;
+  height: auto;
+  border: 1px solid #000;
 }
 
 .logo-img {
-  width: 100%;                     /* 親となる包含ブロックの幅に対するパーセント値で定義 */
+  width: 100%;
 }
 
 .name-container{

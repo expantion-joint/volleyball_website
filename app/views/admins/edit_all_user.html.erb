@@ -1,0 +1,45 @@
+<div class="gp-back-to-index-container">
+  <div class="gp-back-to-index-button">
+    <%= link_to "イベント一覧に戻る", index_post_path, class: "gp-back-to-index-button-text"%>
+  </div>
+</div>
+
+<div class="post-form-body">
+  <div class="post-form-container">
+    <h2>アカウント一覧</h2>
+
+    <span>Type&emsp;0:予約不可/11:一般/21:投稿者/61:コアメン/81:創業者/91:管理者 </span>
+    <table>
+      <tr>
+        <th class="th-admins-user width-userid"> <%= "ID" %></th>
+        <th class="th-admins-user width-name"> <%= "氏名" %></td>
+        <th class="th-admins-user width-email"> <%= "Email" %></td>
+        <th class="th-admins-user width-gender"> <%= "性別" %></td>
+        <th class="th-admins-user width-birthday"> <%= "生年月日" %></td>
+        <th class="th-admins-user width-type"> <%= "Type" %></td>
+        <th class="th-admins-user width-update"> <%= "更新" %></td>
+      </tr>
+      <% @users.each do |user| %>
+        <%= form_with(url: update_all_user_admin_path(user), model: user, local: true, method: :post, html: { class: 'post-form' }  ) do |f| %>
+          <% if user.errors.any? %>
+            <ul>
+              <% user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          <% end %>
+          <tr>
+            <th class="th-admins-user width-userid"> <%= user.id %></th>
+            <td class="td-admins-user width-name"> <%= user.name %></td>
+            <td class="td-admins-user width-email"> <%= user.email %></td>
+            <td class="td-admins-user width-gender"> <%= user.sex %></td>
+            <td class="td-admins-user width-birthday"> <%= user.birthday %></td>
+            <td class="td-admins-user width-type"> <%= f.text_field :usertype, value: user.usertype, class: 'form-control' %></td>
+            <td class="td-admins-user width-update"> <%= f.submit '更新', class: 'admin-user-button admin-user-background-blue admin-user-button-text' %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+    
+  </div>
+</div>

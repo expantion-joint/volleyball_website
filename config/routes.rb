@@ -34,4 +34,8 @@ Rails.application.routes.draw do
   post 'contributors/edit', to: 'contributors#update', as: 'update_contributor'
   delete 'contributors/destroy/:id', to: 'contributors#destroy', as: 'destroy_contributor' # contributor.id
 
+  # admin
+  get 'admins/edit_all_user', to: 'admins#edit_all_user', as: 'edit_all_user_admin' # post.id
+  post 'admins/edit_all_user/:id', to: 'admins#update_all_user', as: 'update_all_user_admin' # post.id
+
 end

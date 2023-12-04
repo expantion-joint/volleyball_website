@@ -13,8 +13,13 @@
   align-items: center;
   width: 95%;
   height: auto;
+  padding: 0px 10px 0px 10px;
   gap: 10px;
   text-decoration: none;
+}
+
+.gp-index-item-container:hover{
+  background-color: #f1f0f0;
 }
 
 .gp-index-image-container {
@@ -70,6 +75,7 @@
   height: auto;
   font-size: 12px;
   font-weight: 600;
+  color: #002ffff2;
   white-space: nowrap;
 }
 
@@ -83,10 +89,6 @@
   overflow: hidden;        /* はみ出した部分を隠す */
   text-overflow: ellipsis; /* はみ出した部分を省略記号で表示 */
   white-space: nowrap;
-}
-
-.gp-index-item-list-container:hover{
-  background-color: #f1f0f0;
 }
 
 .gp-flex-container{

@@ -10,10 +10,10 @@ class PostsController < ApplicationController
     @posts = Post.all
     @orders = Order.all
     @remaining_array = []
-    total = 0
 
     # 募集人数 - 予約数 ＝ 残り
     @posts.each do |post|
+      total = 0
       @orders.each do |order|
         if order.post_id == post.id
           total = total + order.number_of_orders

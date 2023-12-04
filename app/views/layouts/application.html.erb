@@ -35,25 +35,38 @@
             <!-- ログインしている場合に表示されます -->
             <!-- user_signed_in? は device が提供している認証済みかを判定するメソッドです -->
             <li>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+              <%= link_to "イベント一覧", index_post_path, class: "nav-link" %>
             </li>
             <li>
-              <%= link_to "一覧", index_post_path, class: "nav-link" %>
-            </li>
-            <li>
-              <%= link_to "投稿者登録", new_contributor_path, class: "nav-link" %>
-            </li>
-            <li>
-              <%= link_to "新規投稿", new_post_path, class: "nav-link" %>
-            </li>
-            <li>
-              <%= link_to "投稿一覧", index_contributor_path, class: "nav-link" %>
+              <%= link_to "予約済み", index_order_path, class: "nav-link" %>
             </li>
             <li>
               <%= link_to "個人情報編集", edit_user_registration_path, class: "nav-link" %>
             </li>
+            <% if current_user.usertype > 20 %>
+              <% if @contributor.nil? %>
+                <li>
+                  <%= link_to "投稿者登録", new_contributor_path, class: "nav-link" %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to "投稿者情報編集", edit_contributor_path, class: "nav-link" %>
+                </li>
+                <li>
+                  <%= link_to "イベント投稿", new_post_path, class: "nav-link" %>
+                </li>
+                <li>
+                  <%= link_to "投稿一覧", index_contributor_path, class: "nav-link" %>
+                </li>
+              <% end %>
+              <% if current_user.usertype > 90 %>
+                <li>
+                  <%= link_to "Admin", edit_all_user_admin_path, class: "nav-link" %>
+                </li>
+              <% end %>
+            <% end %>
             <li>
-              <%= link_to "予約済み", index_order_path, class: "nav-link" %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
             </li>
           <% else %>
             <!-- ログインしていない場合に表示されます -->
@@ -72,6 +85,16 @@
         <div class=font-account>account</div>
         <div class=name-container>
           <%= link_to current_user.name, edit_user_registration_path, class: "font-name" %>
+        </div>
+      <% end %>
+
+      <% if user_signed_in? %>
+        <div class="logo-after-login">
+          <%= image_tag 'sample_no_image.jpg' ,class: "logo-img" %>
+        </div>
+      <% else %>
+        <div class="logo-before-login">
+          <%= image_tag 'sample_no_image.jpg' ,class: "logo-img" %>
         </div>
       <% end %>
 
