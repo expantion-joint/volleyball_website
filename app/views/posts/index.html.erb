@@ -1,11 +1,29 @@
-<div class="show-button-container">
-  <div class="show-button">
-    <%= link_to "イベント一覧に戻る", index_post_path, class: "show-button-text"%>
-  </div>
-</div>
-
-<!-- body -->
 <div class="gp-index-body">
+
+  <div class="post-info-container">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <%= image_tag asset_path('info_sample_32-9.png'), alt: '' %>
+        </div>
+        
+        <div class="swiper-slide">
+          <%= image_tag asset_path('info_sample_32-9.png'), alt: '' %>
+        </div>
+        
+        <div class="swiper-slide">
+          <%= image_tag asset_path('info_sample_32-9.png'), alt: '' %>
+        </div>
+        
+      </div>
+      <!-- ページネーション -->
+      <div class="swiper-pagination"></div>
+      <!-- 前後の矢印 -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
 
   <h3 class="gp-index-heading">イベント一覧</h3>
 

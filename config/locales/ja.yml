@@ -4,7 +4,8 @@ ja:
       user: 'ユーザー'
       post: '投稿'
       contributor: '投稿者' 
-      order: '予約' 
+      order: '予約'
+      information: 'お知らせ'
     attributes:
       user:
         email: 'メールアドレス'
@@ -32,6 +33,9 @@ ja:
         self_introduction: '自己紹介'
       order:
         number_of_orders: '予約数'
+      information:
+        title: 'タイトル'
+        public_or_private: '公開設定'
 
   date:
     abbr_day_names:

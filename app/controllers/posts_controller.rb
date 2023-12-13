@@ -22,6 +22,7 @@ class PostsController < ApplicationController
       remaining = post.recruitment_numbers - total
       @remaining_array << remaining
     end
+    render :index
   end
   
   def new
@@ -72,6 +73,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @user = User.find(current_user.id)
     @contributor = Contributor.find(@post.contributor_id)
     @order = Order.new
     @orders = Order.all

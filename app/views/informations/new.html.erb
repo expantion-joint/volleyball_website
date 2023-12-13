@@ -1,0 +1,46 @@
+<div class="gp-back-to-index-container">
+  <div class="gp-back-to-index-button">
+    <%= link_to "お知らせ一覧に戻る", index_information_path, class: "gp-back-to-index-button-text"%>
+  </div>
+</div>
+
+<div class="post-form-body">
+  <div class="post-form-container">
+    <h2>お知らせをアップロードしてください</h2>
+    <%= form_with(url: create_information_path, model: @information, local: true, method: :post, html: { class: 'post-form' }  ) do |f| %>
+      
+      <% if @information.errors.any? %>
+        <ul>
+          <% @information.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <div class="form-group info-image-upload">
+        <%= f.label "画像（32:9）", class: 'form-label' %>
+        <div class="image-preview" id="imagePreview">
+          <img src="" alt="Image Preview" class="image-preview__image">
+          <span class="image-preview__default-text">Image will be displayed here</span>
+        </div>
+        <%= f.file_field :image, class: 'form-control-file', id: 'imageUpload' %>
+      </div>
+        
+      <div class="form-group">
+        <%= f.label "タイトル", class: 'form-label' %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+
+       <div class="form-group">
+        <%= f.label "公開設定", class: 'form-label'  %>
+        <%= f.select :public_or_private, [["公開", "公開"], ["非公開", "非公開"]], {include_blank: "選択して下さい"}, {class: "form-select-control"} %>
+        <!--f.select :保存先のカラム名, [["選択肢１", "実際にDBに保存させる内容"], ["選択肢２", "実際にDBに保存させる内容"]], include_blank: "選択して下さい"-->
+      </div>
+
+      <div class="button-group">
+        <%= f.submit '投稿する', class: 'gp-button gp-background-blue gp-button-text' %>
+      </div>
+      
+    <% end %>
+  </div>
+</div>

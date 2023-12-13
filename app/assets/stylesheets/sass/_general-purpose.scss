@@ -5,13 +5,15 @@
   align-items: center;
   height: auto;          /* 100vh:高さ方向全画面 50vh:高さ方向中央 */
   min-height: 100vh;     /* 100vh:幅方向全画面 */
-  width: 100%;          
+  width: 100%;
+  margin-bottom: 50px;       
 }
 
 .gp-index-item-container {
   display: flex;
   align-items: center;
   width: 95%;
+  max-width: 1000px;
   height: auto;
   padding: 0px 10px 0px 10px;
   gap: 10px;
@@ -57,7 +59,7 @@
   max-width:190px;
   height: auto;
   padding : 2px 4px;
-  background: #4e6efff2;
+  background: #002efdf2;
   color: #ffffff;
   border-radius: 5px;
   font-size: 12px;
@@ -98,6 +100,7 @@
 
 .gp-line {
   width: calc(95% + 20px);
+  max-width: 1020px;
   border: 0.8px solid #bebebe;
 }
 

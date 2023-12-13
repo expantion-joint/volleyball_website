@@ -10,13 +10,21 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   
+  <!-- swiper-bundle.min.cssを読み込み -->
+  <!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/> -->
+  
   <!-- Style -->
   <link rel="stylesheet" href="<%= mix('/css/app.css') %>">
   
+  <!-- swiper-bundle.min.jsを読み込み -->
+  <!-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
+
   <!-- Javascript -->
   <!-- <script src="<%= mix('/js/bootstrap.js') %>"></script> -->
   <script src="<%= mix('/js/turbo.js') %>"></script>
   <script src="<%= mix('/js/modal.js') %>"></script>
+  
+
 </head>
 
 <body>
@@ -56,12 +64,18 @@
                   <%= link_to "イベント投稿", new_post_path, class: "nav-link" %>
                 </li>
                 <li>
-                  <%= link_to "投稿一覧", index_contributor_path, class: "nav-link" %>
+                  <%= link_to "イベント編集", index_contributor_path, class: "nav-link" %>
                 </li>
               <% end %>
               <% if current_user.usertype > 90 %>
                 <li>
-                  <%= link_to "Admin", edit_all_user_admin_path, class: "nav-link" %>
+                  <%= link_to "ユーザー管理", edit_all_user_admin_path, class: "nav-link" %>
+                </li>
+                <li>
+                  <%= link_to "お知らせ投稿", new_information_path, class: "nav-link" %>
+                </li>
+                <li>
+                  <%= link_to "お知らせ編集", index_information_path, class: "nav-link" %>
                 </li>
               <% end %>
             <% end %>
@@ -117,6 +131,9 @@
     </div>
   </div>
   <!-- Javascript -->
+  <!-- TODO:swiper-bundle.min.jsを読み込まない -->
+  <script src="<%= mix('/js/swiper-bundle.min.js') %>"></script>
+  <script src="<%= mix('/js/swiper.js') %>"></script>
   <script src="<%= mix('/js/app.js') %>"></script>
 </body>
 </html>

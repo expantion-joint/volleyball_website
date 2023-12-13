@@ -16,4 +16,6 @@ mix.setPublicPath('public')
     .js('app/javascript/app.js', 'public/js/app.js')
     .js('app/javascript/bootstrap.js', 'public/js/bootstrap.js')
     .js('app/javascript/turbo.js', 'public/js/turbo.js')
-    .js('app/javascript/modal.js', 'public/js/modal.js');
+    .js('app/javascript/modal.js', 'public/js/modal.js')
+    .js('app/javascript/swiper-bundle.min.js', 'public/js/swiper-bundle.min.js')
+    .js('app/javascript/swiper.js', 'public/js/swiper.js');

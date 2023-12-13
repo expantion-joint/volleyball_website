@@ -100,7 +100,7 @@
 
       <div class="button-group">
         <% if @post.posting_start_time > Time.zone.now %>
-          <%= link_to '投稿を削除する', destroy_post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "inquiries-button inquiries-button-text" %>
+          <%= link_to '投稿を削除する', destroy_post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "gp-button gp-background-blue gp-button-text" %>
         <% end %>
         <%= f.submit '更新する', class: 'gp-button gp-background-orange gp-button-text' %>
       </div>

@@ -1,0 +1,28 @@
+<div class="gp-back-to-index-container">
+  <div class="gp-back-to-index-button">
+    <%= link_to "イベント一覧に戻る", index_post_path, class: "gp-back-to-index-button-text"%>
+  </div>
+</div>
+
+<!-- body -->
+<div class="gp-index-body">
+
+  <h3 class="gp-index-heading">お知らせ一覧</h3>
+
+  <% @informations.each do |information| %>
+
+    <div class="gp-line"></div>
+    
+    <a class="gp-index-item-container" href="<%= edit_information_path(information) %>">
+
+      <div class="gp-index-item-list-container">
+        <span class="gp-text-black gp-font-size-14px">タイトル&nbsp;<%= ":"%>&nbsp;<%= information.title %></span>
+        <span class="gp-text-black gp-font-size-14px">公開設定&nbsp;<%= ":"%>&nbsp;<%= information.public_or_private%></span>
+      </div>
+
+    </a>
+  <% end %>
+
+  <div class="gp-line"></div>
+
+</div>

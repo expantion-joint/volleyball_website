@@ -38,4 +38,13 @@ Rails.application.routes.draw do
   get 'admins/edit_all_user', to: 'admins#edit_all_user', as: 'edit_all_user_admin' # post.id
   post 'admins/edit_all_user/:id', to: 'admins#update_all_user', as: 'update_all_user_admin' # post.id
 
+  # information
+  get 'informations/index', to: 'informations#index', as: 'index_information'
+  get 'informations/new', to: 'informations#new', as: 'new_information'
+  post 'informations/new', to: 'informations#create', as: 'create_information'
+  get 'informations/show/:id', to: 'informations#show', as: 'show_information' # information.id
+  get 'informations/edit/:id', to: 'informations#edit', as: 'edit_information' # information.id
+  post 'informations/edit/:id', to: 'informations#update', as: 'update_information' # information.id
+  delete 'informations/destroy/:id', to: 'informations#destroy', as: 'destroy_information' # information.id
+
 end

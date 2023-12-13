@@ -6,6 +6,7 @@
 
 // Bootstrap
 //@import '~bootstrap/scss/bootstrap';
+@import "swiper-bundle.min";
 @import "setting/general";
 @import "device";
 @import "normalize";
@@ -13,3 +14,4 @@
 @import "general-purpose";
 @import "posts";
 @import "admins";
+@import "informations";
