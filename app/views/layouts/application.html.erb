@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="<%= mix('/css/app.css') %>">
   
   <!-- swiper-bundle.min.jsを読み込み -->
-  <!-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
   <!-- Javascript -->
   <!-- <script src="<%= mix('/js/bootstrap.js') %>"></script> -->
@@ -45,52 +45,69 @@
             <li>
               <%= link_to "イベント一覧", index_post_path, class: "nav-link" %>
             </li>
+            <div class="gp-line"></div>
             <li>
               <%= link_to "予約済み", index_order_path, class: "nav-link" %>
             </li>
+            <div class="gp-line"></div>
             <li>
               <%= link_to "個人情報編集", edit_user_registration_path, class: "nav-link" %>
             </li>
+            <div class="gp-line"></div>
             <% if current_user.usertype > 20 %>
               <% if @contributor.nil? %>
                 <li>
                   <%= link_to "投稿者登録", new_contributor_path, class: "nav-link" %>
                 </li>
+                <div class="gp-line"></div>
               <% else %>
                 <li>
                   <%= link_to "投稿者情報編集", edit_contributor_path, class: "nav-link" %>
                 </li>
+                <div class="gp-line"></div>
                 <li>
                   <%= link_to "イベント投稿", new_post_path, class: "nav-link" %>
                 </li>
+                <div class="gp-line"></div>
                 <li>
                   <%= link_to "イベント編集", index_contributor_path, class: "nav-link" %>
                 </li>
+                <div class="gp-line"></div>
+                <li>
+                  <%= link_to "イベント参加者", index_post_reservation_holder_path, class: "nav-link" %>
+                </li>
+                <div class="gp-line"></div>
               <% end %>
               <% if current_user.usertype > 90 %>
                 <li>
                   <%= link_to "ユーザー管理", edit_all_user_admin_path, class: "nav-link" %>
                 </li>
+                <div class="gp-line"></div>
                 <li>
                   <%= link_to "お知らせ投稿", new_information_path, class: "nav-link" %>
                 </li>
+                <div class="gp-line"></div>
                 <li>
                   <%= link_to "お知らせ編集", index_information_path, class: "nav-link" %>
                 </li>
+                <div class="gp-line"></div>
               <% end %>
             <% end %>
             <li>
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
             </li>
+            <div class="gp-line"></div>
           <% else %>
             <!-- ログインしていない場合に表示されます -->
             <!-- else 以降は前述のif文の否定になります -->
             <li>
               <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
             </li>
+            <div class="gp-line"></div>
             <li>
               <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
             </li>
+            <div class="gp-line"></div>
           <% end %>
         </ul>
       </div>
@@ -100,15 +117,24 @@
         <div class=name-container>
           <%= link_to current_user.name, edit_user_registration_path, class: "font-name" %>
         </div>
+      <% else %>
+        <div class=font-account>account</div>
+        <div class=name-container>
+          <%= link_to "guest", new_user_session_path, class: "font-name" %>
+        </div>
       <% end %>
 
       <% if user_signed_in? %>
         <div class="logo-after-login">
-          <%= image_tag 'sample_no_image.jpg' ,class: "logo-img" %>
+          <%= link_to index_post_path do%>
+            <%= image_tag 'sample_no_image.jpg' ,class: "logo-img" %>
+          <% end %>
         </div>
       <% else %>
-        <div class="logo-before-login">
-          <%= image_tag 'sample_no_image.jpg' ,class: "logo-img" %>
+        <div class="logo-after-login">
+          <%= link_to index_post_path do%>
+            <%= image_tag 'sample_no_image.jpg' ,class: "logo-img" %>
+          <% end %>
         </div>
       <% end %>
 
@@ -116,15 +142,24 @@
 
     <!-- アラートメッセージ -->
     <% if notice %>
-      <div class="alert alert-success" role="alert">
-        <%= notice %>
+      <div class="notice_and_alert-container">
+        <div class="notice-container">
+          <div class="alert alert-success" role="alert">
+            <%= notice %>
+          </div>
+        </div>
       </div>
     <% end %>
     <% if alert %>
-      <div class="alert alert-danger" role="alert">
-        <%= alert %>
+      <div class="notice_and_alert-container">
+        <div class="alert-container">
+          <div class="alert alert-danger" role="alert">
+            <%= alert %>
+          </div>
+        </div>
       </div>
     <% end %>
+    
 
     <div class="bg-white text-dark">
       <%= yield %>

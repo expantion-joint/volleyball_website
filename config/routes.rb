@@ -10,20 +10,22 @@ Rails.application.routes.draw do
   }
 
   # post
-  get '/', to: 'posts#top', as: 'top_post'
-  get 'posts/index', to: 'posts#index', as: 'index_post'
+  get '/', to: 'posts#index', as: 'index_post'
   get 'posts/new', to: 'posts#new', as: 'new_post'
   post 'posts/new', to: 'posts#create', as: 'create_post'
   get 'posts/show/:id', to: 'posts#show', as: 'show_post' # post.id
   get 'posts/edit/:id', to: 'posts#edit', as: 'edit_post' # post.id
   post 'posts/edit/:id', to: 'posts#update', as: 'update_post' # post.id
   delete 'posts/destroy/:id', to: 'posts#destroy', as: 'destroy_post' # post.id
-
+  get 'posts/index_reservation_holder', to: 'posts#index_reservation_holder', as: 'index_post_reservation_holder'
+  get 'posts/show_reservation_holder/:id', to: 'posts#show_reservation_holder', as: 'show_post_reservation_holder' # post.id
+  
   # order
   get 'orders/index', to: 'orders#index', as: 'index_order'
   post 'orders/new/:id', to: 'orders#create', as: 'create_order' # post.id
   get 'orders/show/:id', to: 'orders#show', as: 'show_order' # post.id
   post 'orders/edit/:id', to: 'orders#update', as: 'update_order' # post.id
+  post 'posts/show_reservation_holder/:id', to: 'orders#update_reservation_holder', as: 'update_order_reservation_holder' # order.id
 
   # contributor
   get 'contributors/index', to: 'contributors#index', as: 'index_contributor'

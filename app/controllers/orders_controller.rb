@@ -38,17 +38,22 @@ class OrdersController < ApplicationController
     end
 
     @remaining = @post.recruitment_numbers - total - @order.number_of_orders
+    @order.payment_status = "未払い"
+    @order.results = 0
 
     if @remaining < 0
-      redirect_to show_post_path(params[:id]), notice: '予約人数が募集人数を超えています'
+      flash[:alert] = "予約人数が募集人数を超えています"
+      redirect_to show_post_path(params[:id])
     else
       if @appointment == "true"
-        redirect_to show_post_path(params[:id]), notice: '既に予約済みです'
+        flash[:alert] = "既に予約済みです"
+        redirect_to show_post_path(params[:id])
       else
         if @order.save
           redirect_to show_post_path(params[:id]), notice: '予約しました'
         else
-          render :new, status: :unprocessable_entity
+          flash[:alert] = "予約に失敗しました"
+          redirect_to show_post_path(params[:id])
         end
       end
     end
@@ -78,12 +83,14 @@ class OrdersController < ApplicationController
     @remaining = @post.recruitment_numbers - total - @order_params.number_of_orders + @order.number_of_orders
 
     if @remaining < 0
-      redirect_to show_order_path(params[:id]), notice: '予約人数が募集人数を超えています'
+      flash[:alert] = "予約人数が募集人数を超えています"
+      redirect_to show_order_path(params[:id])
     else
       if @order.update(order_params)
         redirect_to show_order_path(params[:id]), notice: '予約人数を変更しました'
       else
-        render :show, status: :unprocessable_entity
+        flash[:alert] = "予約に失敗しました"
+        redirect_to show_order_path(params[:id])
       end
     end
   end
@@ -114,9 +121,26 @@ class OrdersController < ApplicationController
     render :show
   end
 
+  def update_reservation_holder
+    @order = Order.find(params[:id])
+    @order.payment_status = "支払済"
+    
+    if @order.update(order_params_without_id)
+      flash[:notice] = "登録しました"
+      redirect_back(fallback_location: index_post_reservation_holder_path)
+    else
+      flash[:alert] = "登録に失敗しました"
+      redirect_back(fallback_location: index_post_reservation_holder_path)
+    end
+  end
+
   private
   def order_params
-    params.require(:order).permit(:number_of_orders).merge(post_id: params[:id], user_id: current_user.id)
+    params.require(:order).permit(:number_of_orders, :results, :payment_status).merge(post_id: params[:id], user_id: current_user.id)
+  end
+
+  def order_params_without_id
+    params.require(:order).permit(:number_of_orders, :results, :payment_status)
   end
 
 end

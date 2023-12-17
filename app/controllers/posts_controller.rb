@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :authenticate_user!, except: [:top, :index]
+  before_action :authenticate_user!, except: [:index]
 
   def top
     render :top
@@ -9,7 +9,9 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @orders = Order.all
+    @informations = Information.all
     @remaining_array = []
+    @open_informations = []
 
     # 募集人数 - 予約数 ＝ 残り
     @posts.each do |post|
@@ -22,6 +24,13 @@ class PostsController < ApplicationController
       remaining = post.recruitment_numbers - total
       @remaining_array << remaining
     end
+
+    @informations.each do |information|
+      if information.public_or_private == "公開"
+        @open_informations << information
+      end
+    end
+
     render :index
   end
   
@@ -89,6 +98,34 @@ class PostsController < ApplicationController
     @remaining = @post.recruitment_numbers - total
 
     render :show
+  end
+
+  def index_reservation_holder
+    all_posts = Post.all
+    @posts = []
+
+    all_posts.each do |post|
+      @contributor = Contributor.find(post.contributor_id)
+      if @contributor.user_id == current_user.id
+        @posts << post
+      end
+    end
+
+    render :index_reservation_holder
+  end
+
+  def show_reservation_holder
+    @post = Post.find(params[:id])
+    all_orders = Order.all
+    @users = []
+    @orders = []
+
+    all_orders.each do |order|
+      if order.post_id == @post.id
+        @users << User.find(order.user_id)
+        @orders << order
+      end
+    end
   end
 
   private
