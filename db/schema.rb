@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_16_001103) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "payment_status"
-    t.string "results"
+    t.integer "results"
     t.index ["post_id"], name: "index_orders_on_post_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end

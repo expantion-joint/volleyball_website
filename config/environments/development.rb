@@ -41,7 +41,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
 
@@ -74,4 +74,18 @@ Rails.application.configure do
 
   # 追加：devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # 追加：Gmailの設定
+  config.action_mailer.raise_delivery_errors = true # メール送信時にエラーが発生した場合、エラーを表示
+  config.action_mailer.delivery_method = :smtp # メール送信の方法をSMTP経由に設定
+  config.action_mailer.smtp_settings = { # SMTPの設定
+    address:              'smtp.gmail.com',
+    port:                  587,
+    domain:               'gmail.com',
+    user_name:             ENV["GMAIL_USERNAME"],
+    password:              ENV["GMAIL_PASSWORD"],
+    authentication:       'plain', # 認証方式としてPLAINを使用
+    enable_starttls_auto:  true # STARTTLS（Transport Layer Security）を自動的に有効にする設定(セキュアな通信)
+  }
+
 end

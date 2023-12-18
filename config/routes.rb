@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # devise
   devise_for :users, controllers: {
     registrations: 'users/registrations', # edit_user_registration_path
+    sessions:      'users/sessions',
+    passwords:     'users/passwords'
   }
 
   # post

@@ -117,6 +117,8 @@ class PostsController < ApplicationController
   def show_reservation_holder
     @post = Post.find(params[:id])
     all_orders = Order.all
+    @payment_price = 0
+    @number_of_participants = 0
     @users = []
     @orders = []
 
@@ -124,6 +126,12 @@ class PostsController < ApplicationController
       if order.post_id == @post.id
         @users << User.find(order.user_id)
         @orders << order
+
+        payment_price = @payment_price
+        @payment_price = order.results * @post.price + payment_price
+
+        number_of_participants = @number_of_participants
+        @number_of_participants = order.results + number_of_participants
       end
     end
   end
