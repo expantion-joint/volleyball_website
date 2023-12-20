@@ -197,14 +197,27 @@
   flex-direction: column;
   justify-content: center;
   gap: 10px;
+  position: relative;
+}
+
+.modal-field-container::after {
+  position: absolute;
+  content:'▼';
+  top: 55%;
+  right: 32%;
+  color: #333;
+  pointer-events: none;
 }
 
 .modal-field {
   width: 120px;
-  height: 40px;
+  padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
   border: 1px solid #000;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .modal-text {
@@ -307,22 +320,188 @@
 
 .form-name-control {
   width: 140px;
-  border: 1px solid lightgray;
   border-radius: 8px;
-  padding: 10px;
 }
 
 .form-select-control {
   width: 162px;
-  border: 1px solid lightgray;
-  border-radius: 8px;
-  padding: 10px;
+  position: relative;
 }
 
-.form-date_select-control {
+.form-select-control::after {
+  position: absolute;
+  content:'▼';
+  top: 28%;
+  right: 4%;
+  color: #333;
+  pointer-events: none;
+}
+
+.form-select-control-item {
+  width: 100%;
+  border: 1px solid lightgray;
+  padding: 10px;
+  border-radius: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.form-date_select-control-date {
+  position: relative;
+}
+
+.form-date_select-control-date::after {
+  position: absolute;
+  content:'▼';
+  top: 28%;
+  right: 4%;
+  color: #333;
+  pointer-events: none;
+}
+
+.form-date_select-control-month {
+  position: relative;
+}
+
+.form-date_select-control-month::after {
+  position: absolute;
+  content:'▼';
+  top: 28%;
+  right: 33%;
+  color: #333;
+  pointer-events: none;
+}
+
+.form-date_select-control-year {
+  position: relative;
+}
+
+.form-date_select-control-year::after {
+  position: absolute;
+  content:'▼';
+  top: 28%;
+  right: 68%;
+  color: #333;
+  pointer-events: none;
+}
+
+.form-date_select-control-item {
   border: 1px solid lightgray;
   border-radius: 8px;
-  padding: 10px;
+  padding: 10px 30px 10px 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.form-time_select-control-minute {
+  position: relative;
+}
+
+.form-time_select-control-minute::after {
+  position: absolute;
+  content:'▼';
+  top: 28%;
+  right: 5%;
+  color: #333;
+  pointer-events: none;
+}
+
+.form-time_select-control-hour {
+  position: relative;
+}
+
+.form-time_select-control-hour::after {
+  position: absolute;
+  content:'▼';
+  top: 28%;
+  right: 62%;
+  color: #333;
+  pointer-events: none;
+}
+
+.form-time_select-control-item {
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  padding: 10px 30px 10px 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.form-date_time_select-control-minute {
+  position: relative;
+}
+
+.form-date_time_select-control-minute::after {
+  position: absolute;
+  content:'▼';
+  top: 28%;
+  right: 2%;
+  color: #333;
+  pointer-events: none;
+}
+
+.form-date_time_select-control-hour {
+  position: relative;
+}
+
+.form-date_time_select-control-hour::after {
+  position: absolute;
+  content:'▼';
+  top: 28%;
+  right: 21%;
+  color: #333;
+  pointer-events: none;
+}
+
+.form-date_time_select-control-date {
+  position: relative;
+}
+
+.form-date_time_select-control-date::after {
+  position: absolute;
+  content:'▼';
+  top: 28%;
+  right: 44%;
+  color: #333;
+  pointer-events: none;
+}
+
+.form-date_time_select-control-month {
+  position: relative;
+}
+
+.form-date_time_select-control-month::after {
+  position: absolute;
+  content:'▼';
+  top: 28%;
+  right: 60%;
+  color: #333;
+  pointer-events: none;
+}
+
+.form-date_time_select-control-year {
+  position: relative;
+}
+
+.form-date_time_select-control-year::after {
+  position: absolute;
+  content:'▼';
+  top: 28%;
+  right: 81%;
+  color: #333;
+  pointer-events: none;
+}
+
+.form-date_time_select-control-item {
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  padding: 10px 30px 10px 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .form-label {

@@ -29,14 +29,20 @@
 
       <div class="field">
         <%= f.label :性別, class: "label" %>
-        <%= f.select :sex, [["男性", "男性"], ["女性", "女性"], ["その他", "その他"]], {include_blank: "選択して下さい"}, {class: "device-input-itme-select"} %>
-        <!--f.select :保存先のカラム名, [["選択肢１", "実際にDBに保存させる内容"], ["選択肢２", "実際にDBに保存させる内容"]], include_blank: "選択して下さい"-->
+        <div class="device-input-itme-select-container">
+          <%= f.select :sex, [["男性", "男性"], ["女性", "女性"], ["その他", "その他"]], {include_blank: "選択して下さい"}, {class: "device-input-itme-select"} %>
+          <!--f.select :保存先のカラム名, [["選択肢１", "実際にDBに保存させる内容"], ["選択肢２", "実際にDBに保存させる内容"]], include_blank: "選択して下さい"-->
+        </div>
       </div>
 
       <div class="field">
         <%= f.label :生年月日, class: "label" %>
-        <div class="gp-flex-container">
-          <%= f.date_select :birthday, {start_year: (Time.now.year - 100), end_year: (Time.now.year)}, {class: "device-input-itme-date"} %>
+        <div class="device-input-itme-birthday_year-select-container">
+          <div class="device-input-itme-birthday_month-select-container">
+            <div class="gp-flex-container device-input-itme-birthday_date-select-container">
+              <%= f.date_select :birthday, {start_year: (Time.now.year - 100), end_year: (Time.now.year)}, {class: "device-input-itme-birthday-select"} %>
+            </div>
+          </div>
         </div>
       </div>
 

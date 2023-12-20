@@ -33,8 +33,10 @@
 
        <div class="form-group">
         <%= f.label "公開設定", class: 'form-label'  %>
-        <%= f.select :public_or_private, [["公開", "公開"], ["非公開", "非公開"]], {include_blank: "選択して下さい"}, {class: "form-select-control"} %>
-        <!--f.select :保存先のカラム名, [["選択肢１", "実際にDBに保存させる内容"], ["選択肢２", "実際にDBに保存させる内容"]], include_blank: "選択して下さい"-->
+        <div class="form-select-control">
+          <%= f.select :public_or_private, [["公開", "公開"], ["非公開", "非公開"]], {include_blank: "選択して下さい"}, {class: "form-select-control-item"} %>
+          <!--f.select :保存先のカラム名, [["選択肢１", "実際にDBに保存させる内容"], ["選択肢２", "実際にDBに保存させる内容"]], include_blank: "選択して下さい"-->
+        </div>
       </div>
 
       <div class="button-group">

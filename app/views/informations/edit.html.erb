@@ -33,8 +33,10 @@
         
       <div class="form-group">
         <%= f.label "公開設定", class: 'form-label'  %>
-        <% choices = [["公開", "公開"], ["非公開", "非公開"]] %>
-        <%= f.select :public_or_private, options_for_select(choices, @information.public_or_private), {include_blank: "選択して下さい"}, {class: "form-select-control"} %>
+        <div class="form-select-control">
+          <% choices = [["公開", "公開"], ["非公開", "非公開"]] %>
+          <%= f.select :public_or_private, options_for_select(choices, @information.public_or_private), {include_blank: "選択して下さい"}, {class: "form-select-control-item"} %>
+        </div>
       </div>
 
       <div class="button-group">

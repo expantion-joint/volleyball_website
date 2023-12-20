@@ -19,14 +19,20 @@
 
       <div class="field">
         <%= f.label "性別", class: 'form-label' %>
-        <% choices = [["男性", "男性"], ["女性", "女性"], ["その他", "その他"]] %>
-        <%= f.select :sex, options_for_select(choices, value: @user.sex), {include_blank: "選択して下さい"}, {class: "form-select-control"} %>
+        <div class="device-input-itme-select-container">
+          <% choices = [["男性", "男性"], ["女性", "女性"], ["その他", "その他"]] %>
+          <%= f.select :sex, options_for_select(choices, value: @user.sex), {include_blank: "選択して下さい"}, {class: "device-input-itme-select"} %>
+        </div>
       </div>
 
       <div class="field">
         <%= f.label "生年月日", class: 'form-label' %>
-        <div class="gp-flex-container">
-          <%= f.date_select :birthday, {start_year: (Time.now.year - 100), end_year: (Time.now.year)}, {class: "device-input-itme-date"} %>
+        <div class="device-input-itme-birthday_year-select-container">
+          <div class="device-input-itme-birthday_month-select-container">
+            <div class="gp-flex-container device-input-itme-birthday_date-select-container">
+              <%= f.date_select :birthday, {start_year: (Time.now.year - 100), end_year: (Time.now.year)}, {class: "device-input-itme-birthday-select"} %>
+            </div>
+          </div>
         </div>
       </div>
 

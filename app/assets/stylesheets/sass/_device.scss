@@ -54,19 +54,77 @@
           width: calc(100% - 20px);
         } 
 
+        .device-input-itme-select-container {
+          width: 160px;
+          position: relative;
+        }
+        
+        .device-input-itme-select-container::after {
+          position: absolute;
+          content:'▼';
+          top: 28%;
+          right: 4%;
+          color: #333;
+          pointer-events: none;
+        }
+        
         .device-input-itme-select {
-          width: 150px;
-          height: 40px;
-          border-radius: 5px;
+          width: 100%;
+          padding: 10px 30px 10px 10px;
           border: 1px solid #ddd;
-        } 
+          border-radius: 5px;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+        }
 
-        .device-input-itme-date {
-          width: 80px;
-          height: 40px;
-          border-radius: 5px;
+        .device-input-itme-birthday_date-select-container {
+          position: relative;
+        }
+        
+        .device-input-itme-birthday_date-select-container::after {
+          position: absolute;
+          content:'▼';
+          top: 28%;
+          left: 43%;
+          color: #333;
+          pointer-events: none;
+        }
+
+        .device-input-itme-birthday_month-select-container {
+          position: relative;
+        }
+        
+        .device-input-itme-birthday_month-select-container::after {
+          position: absolute;
+          content:'▼';
+          top: 28%;
+          left: 29%;
+          color: #333;
+          pointer-events: none;
+        }
+
+        .device-input-itme-birthday_year-select-container {
+          position: relative;
+        }
+        
+        .device-input-itme-birthday_year-select-container::after {
+          position: absolute;
+          content:'▼';
+          top: 28%;
+          left: 13%;
+          color: #333;
+          pointer-events: none;
+        }
+
+        .device-input-itme-birthday-select {
           border: 1px solid #ddd;
+          padding: 10px 30px 10px 10px;
+          border-radius: 5px;
           margin-right: 5px;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
         } 
   
         input {
