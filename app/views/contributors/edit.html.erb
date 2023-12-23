@@ -6,7 +6,7 @@
 
 <div class="post-form-body">
   <div class="post-form-container">
-    <h2>編集画面</h2>
+    <h3>投稿者情報を編集してください</h3>
     <%= form_with(url: update_contributor_path, model: @contributor, local: true, method: :post, html: { class: 'post-form' }  ) do |f| %>
       
       <% if @contributor.errors.any? %>
@@ -18,7 +18,7 @@
       <% end %>
 
       <div class="form-group image-upload">
-        <%= f.label "画像", class: 'form-label' %>
+        <%= f.label "画像（1:1）", class: 'form-label' %>
         <div class="image-preview" id="imagePreview">
           <img src="<%= @contributor.image.attached? ? url_for(@contributor.image) : "" %>" alt="Image Preview" class="image-preview__image <%= @contributor.image.attached? ? "-block" : "" %>">
           <span class="image-preview__default-text <%= @contributor.image.attached? ? "-none" : "" %>">No image uploaded</span>
@@ -33,9 +33,11 @@
 
       <div class="form-group">
         <%= f.label "自己紹介", class: 'form-label' %>
-        <%= f.text_area :self_introduction, value: @contributor.self_introduction, class: 'form-control' %>
+        <%= f.text_area :self_introduction, value: @contributor.self_introduction, class: 'form-text-control' %>
       </div>
       
+      <p></p>
+
       <div class="button-group">
         <%= f.submit '更新する', class: 'gp-button gp-background-orange gp-button-text' %>
         <%= link_to '投稿者アカウントを削除する', destroy_contributor_path(@contributor), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "gp-button gp-background-blue gp-button-text" %>

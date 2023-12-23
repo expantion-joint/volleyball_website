@@ -165,16 +165,16 @@
 .gp-button-text {
   color: #FFF;
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   line-height: normal;
   text-decoration: none;
   white-space: nowrap;
 }
 
 .gp-button {
-  padding: 2px 15px;
+  padding: 4px 15px;
   align-items: center;
   border-radius: 5px;
   border: none;
@@ -197,7 +197,7 @@
 }
 
 .gp-back-to-index-button {
-  padding: 1px 10px;
+  padding: 2px 10px;
   align-items: center;
   background: #8c8c8c;
   border-radius: 8px;
@@ -205,10 +205,14 @@
   cursor: pointer;
 }
 
+.gp-back-to-index-button:hover {
+  background-color: #606060;
+}
+
 .gp-back-to-index-button-text {
   color: #FFF;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;

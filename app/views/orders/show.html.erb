@@ -11,7 +11,7 @@
       <% if @post.image.attached? %>
         <%= image_tag(@post.image, class: "show-image") %>
       <% else %>
-        <%= image_tag 'sample_no_image.jpg' ,class: "show-image" %>
+        <%= image_tag 'no_image.png' ,class: "show-image" %>
       <% end %>
     </div>
 
@@ -37,7 +37,7 @@
       </tr>
 
       <tr>
-        <th class=th-post-show>競技</th> <td class=td-post-show> <%= @post.category %> </td>
+        <th class=th-post-show>内容</th> <td class=td-post-show> <%= @post.category %> </td>
       </tr>
 
       <tr>
@@ -60,7 +60,7 @@
   </div>
    
   <div class="show-lower-container">
-    <span class="show-heading">&nbsp;内容（よくご確認ください）</span>
+    <span class="show-heading">&nbsp;イベント詳細&nbsp;</span>
     
     <div class="show-detail-container">
       <span> <%= safe_join(@post.content.split("\n"),tag(:br))%></span>

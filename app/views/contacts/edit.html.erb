@@ -1,0 +1,53 @@
+<div class="gp-back-to-index-container">
+  <div class="gp-back-to-index-button">
+    <%= link_to "お問い合わせ一覧に戻る", index_contact_path, class: "gp-back-to-index-button-text"%>
+  </div>
+</div>
+
+<div class="post-form-body">
+  <div class="post-form-container">
+    <h3>お問い合わせ</h3>
+    <%= form_with(url: update_contact_path, model: @contact, local: true, method: :post, html: { class: 'post-form' }  ) do |f| %>
+      
+      <% if @contact.errors.any? %>
+        <ul>
+          <% @contact.errors.full_messages.each do |message| %>
+            <li class="gp-text-red">・<%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <span class="contact-label">お名前</span>
+      <div class="contact-title-container">
+        <span> <%= @contact.name%></span>
+      </div>
+
+      <span class="contact-label">メールアドレス</span>
+      <div class="contact-title-container">
+        <span> <%= @contact.email%></span>
+      </div>
+
+      <span>タイトル</span>
+      <div class="contact-title-container">
+        <span> <%= @contact.title%></span>
+      </div>
+
+      <span>お問い合わせ内容</span>
+      <div class="contact-content-container">
+        <span> <%= safe_join(@contact.content.split("\n"),tag(:br))%></span>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "回答", class: 'form-label' %>
+        <%= f.text_area :answer, value: @contact.answer, class: 'form-text-control' %>
+      </div>
+
+      <p></p>
+
+      <div class="button-group">
+        <%= f.submit '送信する', class: 'gp-button gp-background-blue gp-button-text' %>
+      </div>
+    
+    <% end %>
+  </div>
+</div>

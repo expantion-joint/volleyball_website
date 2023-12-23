@@ -1,0 +1,48 @@
+<div class="gp-back-to-index-container">
+  <div class="gp-back-to-index-button">
+    <%= link_to "イベント一覧に戻る", index_post_path, class: "gp-back-to-index-button-text"%>
+  </div>
+</div>
+
+<div class="post-form-body">
+  <div class="post-form-container">
+    <h3>お問い合わせ</h3>
+    <%= form_with(url: create_contact_path, model: @contact, local: true, method: :post, html: { class: 'post-form' }  ) do |f| %>
+      
+      <% if @contact.errors.any? %>
+        <ul>
+          <% @contact.errors.full_messages.each do |message| %>
+            <li class="gp-text-red">・<%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label "お名前", class: 'form-label' %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "あなたのメールアドレス", class: 'form-label' %>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "タイトル", class: 'form-label' %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+        
+      <div class="form-group">
+        <%= f.label "内容", class: 'form-label' %>
+        <%= f.text_area :content, class: 'form-text-control' %>
+      </div>
+
+      <p></p>
+
+      <div class="button-group">
+        <%= f.submit '送信する', class: 'gp-button gp-background-blue gp-button-text' %>
+      </div>
+    
+    <% end %>
+  </div>
+</div>

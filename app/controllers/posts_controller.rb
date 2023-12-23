@@ -1,10 +1,7 @@
 class PostsController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
 
-  def top
-    render :top
-  end
 
   def index
     @posts = Post.all
@@ -57,6 +54,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @user = User.find(current_user.id)
     render :edit
   end
 
@@ -82,11 +80,17 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @user = User.find(current_user.id)
     @contributor = Contributor.find(@post.contributor_id)
     @order = Order.new
     @orders = Order.all
     total = 0
+    
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    else
+      @user = User.new
+      @user.usertype = 11
+    end
 
     # 募集人数 - 予約数 ＝ 残り
     @orders.each do |order|
@@ -102,12 +106,19 @@ class PostsController < ApplicationController
 
   def index_reservation_holder
     all_posts = Post.all
+    user = User.find(current_user.id)
     @posts = []
 
-    all_posts.each do |post|
-      @contributor = Contributor.find(post.contributor_id)
-      if @contributor.user_id == current_user.id
+    if user.usertype > 80
+      all_posts.each do |post|
         @posts << post
+      end
+    else
+      all_posts.each do |post|
+        @contributor = Contributor.find(post.contributor_id)
+        if @contributor.user_id == current_user.id
+          @posts << post
+        end
       end
     end
 

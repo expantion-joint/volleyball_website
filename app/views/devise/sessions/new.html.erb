@@ -13,13 +13,15 @@
         <%= f.label :パスワード, class: "label" %>
         <%= f.password_field :password, autocomplete: "current-password", class:"device-input-itme"  %>
       </div>
-
+      
+      <!--
       <% if devise_mapping.rememberable? %>
         <div class="field -checkbox">
           <%= f.check_box :remember_me, class: "-checkbox" %>
           <%= f.label :パスワードを保存する %>
         </div>
       <% end %>
+      -->
 
       <div class="actions">
         <%= f.submit "ログイン" %>

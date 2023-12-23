@@ -1,10 +1,10 @@
 .info-image-upload {
   margin-top: 20px;
-  width: 288px;
+  width: 100%;
 
   .image-preview {
-    width: 100%;
-    height: 81px;
+    max-width: 288px;
+    min-height: 81px;
     border: 2px dashed lightgray;
     display: flex;
     align-items: center;

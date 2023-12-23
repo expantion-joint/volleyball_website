@@ -7,7 +7,7 @@
 <!-- body -->
 <div class="gp-index-body">
 
-  <h3 class="gp-index-heading">投稿イベント一覧</h3>
+  <h3 class="gp-index-heading">イベントを選択してください</h3>
 
   <% @posts.each do |post| %>
 
@@ -19,7 +19,7 @@
         <% if post.image.attached? %>
           <%= image_tag(post.image, class: "gp-index-image") %>
         <% else %>
-          <%= image_tag 'sample_no_image.jpg' ,class: "gp-index-image" %>
+          <%= image_tag 'no_image.png' ,class: "gp-index-image" %>
         <% end %>
       </div>
 
@@ -28,7 +28,7 @@
         <span class="gp-text-black gp-font-size-14px">開催日&nbsp;<%= ":"%>&nbsp;<%= post.event_date.strftime("%Y年%m月%d日") %></span>
         <span class="gp-text-black gp-font-size-14px">時間&emsp;&nbsp;<%= ":"%>&nbsp;<%= post.event_start_time.strftime("%H時%M分") %>〜<%= post.event_end_time.strftime("%H時%M分") %></span>
         <span class="gp-text-black gp-font-size-14px">場所&emsp;&nbsp;<%= ":"%>&nbsp;<%= post.venue %></span>
-        <span class="gp-text-black gp-font-size-14px">競技&emsp;&nbsp;<%= ":"%>&nbsp;<%= post.category %></span>
+        <span class="gp-text-black gp-font-size-14px">内容&emsp;&nbsp;<%= ":"%>&nbsp;<%= post.category %></span>
         <span class="gp-text-black gp-font-size-14px">参加費&nbsp;<%= ":"%>&nbsp;<%= post.price %>円</span>
       </div>
 

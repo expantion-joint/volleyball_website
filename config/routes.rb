@@ -51,4 +51,12 @@ Rails.application.routes.draw do
   post 'informations/edit/:id', to: 'informations#update', as: 'update_information' # information.id
   delete 'informations/destroy/:id', to: 'informations#destroy', as: 'destroy_information' # information.id
 
+  # contact
+  get 'contacts/index', to: 'contacts#index', as: 'index_contact'
+  get 'contacts/new', to: 'contacts#new', as: 'new_contact'
+  post 'contacts/new', to: 'contacts#create', as: 'create_contact'
+  get 'contacts/edit/:id', to: 'contacts#edit', as: 'edit_contact' # contact.id
+  post 'contacts/edit/:id', to: 'contacts#update', as: 'update_contact' # contact.id
+  delete 'contacts/destroy/:id', to: 'contacts#destroy', as: 'destroy_contact' # contact.id
+
 end

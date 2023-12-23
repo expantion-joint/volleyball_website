@@ -1,0 +1,32 @@
+<div class="gp-back-to-index-container">
+  <div class="gp-back-to-index-button">
+    <%= link_to "イベント一覧に戻る", index_post_path, class: "gp-back-to-index-button-text"%>
+  </div>
+</div>
+
+<!-- body -->
+<div class="gp-index-body">
+
+  <h3 class="gp-index-heading">お問い合わせ一覧</h3>
+
+  <% @contacts.each do |contact| %>
+
+    <div class="gp-line"></div>
+    
+    <a class="gp-index-item-container" href="<%= edit_contact_path(contact) %>">
+
+      <div class="gp-index-item-list-container">
+        <span class="gp-text-black gp-font-size-14px">タイトル&nbsp;<%= ":"%>&nbsp;<%= contact.title %></span>
+        <% if contact.answer.nil? %>
+          <span class="gp-text-red gp-font-size-14px">回答状況&nbsp;<%= ":"%>&nbsp;<%= "未回答"%></span>
+        <% else %>
+          <span class="gp-text-black gp-font-size-14px">回答状況&nbsp;<%= ":"%>&nbsp;<%= "回答済"%></span>
+        <% end %>
+      </div>
+
+    </a>
+  <% end %>
+
+  <div class="gp-line"></div>
+
+</div>

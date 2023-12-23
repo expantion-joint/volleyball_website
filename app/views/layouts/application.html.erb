@@ -91,8 +91,16 @@
                   <%= link_to "お知らせ編集", index_information_path, class: "nav-link" %>
                 </li>
                 <div class="gp-line"></div>
+                <li>
+                  <%= link_to "お問い合わせ一覧", index_contact_path, class: "nav-link" %>
+                </li>
+                <div class="gp-line"></div>
               <% end %>
             <% end %>
+            <li>
+              <%= link_to "お問い合わせ", new_contact_path, class: "nav-link" %>
+            </li>
+            <div class="gp-line"></div>
             <li>
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
             </li>
@@ -101,11 +109,19 @@
             <!-- ログインしていない場合に表示されます -->
             <!-- else 以降は前述のif文の否定になります -->
             <li>
+              <%= link_to "イベント一覧", index_post_path, class: "nav-link" %>
+            </li>
+            <div class="gp-line"></div>
+            <li>
               <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
             </li>
             <div class="gp-line"></div>
             <li>
               <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+            </li>
+            <div class="gp-line"></div>
+            <li>
+              <%= link_to "お問い合わせ", new_contact_path, class: "nav-link" %>
             </li>
             <div class="gp-line"></div>
           <% end %>
@@ -127,13 +143,13 @@
       <% if user_signed_in? %>
         <div class="logo-after-login">
           <%= link_to index_post_path do%>
-            <%= image_tag 'sample_no_image.jpg' ,class: "logo-img" %>
+            <%= image_tag 'no_image.png' ,class: "logo-img" %>
           <% end %>
         </div>
       <% else %>
         <div class="logo-after-login">
           <%= link_to index_post_path do%>
-            <%= image_tag 'sample_no_image.jpg' ,class: "logo-img" %>
+            <%= image_tag 'no_image.png' ,class: "logo-img" %>
           <% end %>
         </div>
       <% end %>

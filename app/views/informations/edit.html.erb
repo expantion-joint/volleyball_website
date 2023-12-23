@@ -6,7 +6,7 @@
 
 <div class="post-form-body">
   <div class="post-form-container">
-    <h2>お知らせを編集してください</h2>
+    <h3>お知らせを編集してください</h3>
     <%= form_with(url: update_information_path, model: @information, local: true, method: :post, html: { class: 'post-form' }  ) do |f| %>
       
       <% if @information.errors.any? %>

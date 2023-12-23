@@ -1,15 +1,22 @@
 class ContributorsController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
 
   def index
     all_posts = Post.all
+    user = User.find(current_user.id)
     @posts = []
 
-    all_posts.each do |post|
-      @contributor = Contributor.find(post.contributor_id)
-      if @contributor.user_id == current_user.id
+    if user.usertype > 90
+      all_posts.each do |post|
         @posts << post
+      end
+    else
+      all_posts.each do |post|
+        @contributor = Contributor.find(post.contributor_id)
+        if @contributor.user_id == current_user.id
+          @posts << post
+        end
       end
     end
   end

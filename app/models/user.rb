@@ -7,15 +7,16 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :birthday, presence: true
   validates :sex, presence: true
-  validates :password, presence: true, on: :create
 
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  validates :password, format: { with: VALID_PASSWORD_REGEX, message: "は半角英数混合で入力してください" }, on: :create
+  validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'は半角英数混合で入力してください' }, allow_blank: true, on: :update
   
   has_many :contributors, dependent: :destroy
   has_many :orders, dependent: :destroy
 
   # devise（現在のパスワードを入力しなくてもパスワードを更新できるメソッド）
   def update_without_current_password(params)
-    params.delete(:current_password)
 
     if params[:password].blank? && params[:password_confirmation].blank? 
       params.delete(:password)

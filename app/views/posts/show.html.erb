@@ -11,7 +11,7 @@
       <% if @post.image.attached? %>
         <%= image_tag(@post.image, class: "show-image") %>
       <% else %>
-        <%= image_tag 'sample_no_image.jpg' ,class: "show-image" %>
+        <%= image_tag 'no_image.png' ,class: "show-image" %>
       <% end %>
     </div>
 
@@ -21,7 +21,24 @@
       </tr>
 
       <tr>
-        <th class=th-post-show>開催日</th> <td class=td-post-show> <%= @post.event_date.strftime("%Y年%m月%d日") %> </td>
+        <th class=th-post-show>開催日</th> <td class=td-post-show> <%= @post.event_date.strftime("%Y年%m月%d日(") + case @post.event_date.strftime("%A")
+          when "Sunday"
+            "日"
+          when "Monday"
+            "月"
+          when "Tuesday"
+            "火"
+          when "Wednesday"
+            "水"
+          when "Thursday"
+            "木"
+          when "Friday"
+            "金"
+          when "Saturday"
+            "土"
+          else
+            ""
+        end + ")" %></td>
       </tr>
 
       <tr>
@@ -37,7 +54,7 @@
       </tr>
 
       <tr>
-        <th class=th-post-show>競技</th> <td class=td-post-show> <%= @post.category %> </td>
+        <th class=th-post-show>内容</th> <td class=td-post-show> <%= @post.category %> </td>
       </tr>
 
       <tr>
@@ -55,14 +72,18 @@
   </div>
    
   <div class="show-lower-container">
-    <span class="show-heading">&nbsp;内容（予約前によくご確認ください）</span>
+    <span class="show-heading">&nbsp;イベント詳細&nbsp;</span>
     
     <div class="show-detail-container">
       <span> <%= safe_join(@post.content.split("\n"),tag(:br))%></span>
     </div>
 
     <!-- modal button -->
-    <button class="show-order-button show-order-button-text js-button" data-target="#modal<%= @post.id %>">予約する</button>
+    <% if user_signed_in? %>
+      <button class="show-order-button show-order-button-text js-button" data-target="#modal<%= @post.id %>">予約する</button>
+    <% else %>
+      <%= button_to "予約する", new_user_session_path, method: :get, class: "show-order-button show-order-button-text" %>
+    <% end %>
 
     <!-- modal -->
     <div id="modal<%= @post.id %>" class="modal js-modal">

@@ -6,6 +6,7 @@ ja:
       contributor: '投稿者' 
       order: '予約'
       information: 'お知らせ'
+      contact: 'お問い合わせ' 
     attributes:
       user:
         email: 'メールアドレス'
@@ -25,9 +26,9 @@ ja:
         posting_end_time: '投稿終了時間'
         address: '住所'
         recruitment_numbers: '募集人数'
-        content: '内容'
+        content: 'イベント詳細'
         price: '価格'
-        category: '競技'
+        category: 'イベント内容'
       contributor:
         name: '投稿者名'
         self_introduction: '自己紹介'
@@ -38,6 +39,12 @@ ja:
       information:
         title: 'タイトル'
         public_or_private: '公開設定'
+      contact:
+        title: 'タイトル'
+        email: 'メールアドレス'
+        content: '内容'
+        answer: '回答'
+        name: 'お名前'
 
   date:
     abbr_day_names:
@@ -143,6 +150,7 @@ ja:
       too_long: は%{count}文字以内で入力してください
       too_short: は%{count}文字以上で入力してください
       wrong_length: は%{count}文字で入力してください
+      not_found: が見つかりません
       not_saved: ""
     template:
       body: 次の項目を確認してください
@@ -266,8 +274,8 @@ ja:
         subject: 'アカウントの登録方法'
       #        subject: 'Confirmation instructions'
       reset_password_instructions:
-        subject:                    "パスワードの再設定"
-        title:                      "こんにちは、"
+        subject:                    "パスワードの再設定【自動送信】"
+        title:                      "いつも当アプリケーションをご利用いただき、ありがとうございます。"
         reset_password_explanation: "パスワードの変更を受け付けました。以下のリンクから変更できます。"
         reset_password_link:        "パスワードを変更する"
         please_ignore:              "※パスワードリセットの申請に心当たりがない場合は、以降の対応は不要となります。"

@@ -1,12 +1,12 @@
 <div class="gp-back-to-index-container">
   <div class="gp-back-to-index-button">
-    <%= link_to "お知らせ一覧に戻る", index_information_path, class: "gp-back-to-index-button-text"%>
+    <%= link_to "イベント一覧に戻る", index_post_path, class: "gp-back-to-index-button-text"%>
   </div>
 </div>
 
 <div class="post-form-body">
   <div class="post-form-container">
-    <h2>お知らせをアップロードしてください</h2>
+    <h3>お知らせをアップロードしてください</h3>
     <%= form_with(url: create_information_path, model: @information, local: true, method: :post, html: { class: 'post-form' }  ) do |f| %>
       
       <% if @information.errors.any? %>
