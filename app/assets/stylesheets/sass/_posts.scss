@@ -542,22 +542,12 @@
 }
 
 /* ====================== header ======================= */
-.logo-after-login {
+.logo-container {
   position: relative;
-  top: -55px;
+  top: -45px;
   left: 10px;
-  width: 80px;
+  width: 160px;
   height: auto;
-  border: 1px solid #000;
-}
-
-.logo-before-login {
-  position: relative;
-  top: -27px;
-  left: 10px;
-  width: 80px;
-  height: auto;
-  border: 1px solid #000;
 }
 
 .logo-img {

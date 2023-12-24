@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <!-- title -->
-  <title>SNS App</title>
+  <title>Together</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
@@ -17,13 +17,12 @@
   <link rel="stylesheet" href="<%= mix('/css/app.css') %>">
   
   <!-- swiper-bundle.min.jsを読み込み -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <%# <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> %>
 
   <!-- Javascript -->
   <!-- <script src="<%= mix('/js/bootstrap.js') %>"></script> -->
   <script src="<%= mix('/js/turbo.js') %>"></script>
   <script src="<%= mix('/js/modal.js') %>"></script>
-  
 
 </head>
 
@@ -102,6 +101,10 @@
             </li>
             <div class="gp-line"></div>
             <li>
+              <%= link_to "利用規約", show_post_terms_of_use_path, class: "nav-link" %>
+            </li>
+            <div class="gp-line"></div>
+            <li>
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
             </li>
             <div class="gp-line"></div>
@@ -124,6 +127,10 @@
               <%= link_to "お問い合わせ", new_contact_path, class: "nav-link" %>
             </li>
             <div class="gp-line"></div>
+            <li>
+              <%= link_to "利用規約", show_post_terms_of_use_path, class: "nav-link" %>
+            </li>
+            <div class="gp-line"></div>
           <% end %>
         </ul>
       </div>
@@ -140,19 +147,11 @@
         </div>
       <% end %>
 
-      <% if user_signed_in? %>
-        <div class="logo-after-login">
-          <%= link_to index_post_path do%>
-            <%= image_tag 'no_image.png' ,class: "logo-img" %>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="logo-after-login">
-          <%= link_to index_post_path do%>
-            <%= image_tag 'no_image.png' ,class: "logo-img" %>
-          <% end %>
-        </div>
-      <% end %>
+      <div class="logo-container">
+        <%= link_to index_post_path do%>
+          <%= image_tag 'logo.png' ,class: "logo-img" %>
+        <% end %>
+      </div>
 
     </nav>
 
@@ -182,7 +181,7 @@
     </div>
   </div>
   <!-- Javascript -->
-  <!-- TODO:swiper-bundle.min.jsを読み込まない -->
+  <!-- swiper -->
   <script src="<%= mix('/js/swiper-bundle.min.js') %>"></script>
   <script src="<%= mix('/js/swiper.js') %>"></script>
   <script src="<%= mix('/js/app.js') %>"></script>

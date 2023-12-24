@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :show_terms_of_use]
 
 
   def index
@@ -32,12 +32,19 @@ class PostsController < ApplicationController
   end
   
   def new
-    @post = Post.new
-    render :new
+    user = User.find(current_user.id)
+
+    if user.usertype > 20
+      @post = Post.new
+      render :new
+    else
+      redirect_to index_post_path
+    end
   end
 
   def create
     @post = Post.new(post_params)
+    user = User.find(current_user.id)
     @contributor = Contributor.find_by(user_id: current_user.id)
     @post.contributor_id = @contributor.id
    
@@ -45,37 +52,57 @@ class PostsController < ApplicationController
       @post.image.attach(params[:post][:image])
     end
 
-    if @post.save
-      redirect_to index_post_path, notice: '投稿しました'
+    if user.usertype > 20
+      if @post.save
+        redirect_to index_post_path, notice: '投稿しました'
+      else
+        render :new, status: :unprocessable_entity
+      end
     else
-      render :new, status: :unprocessable_entity
+      redirect_to index_post_path
     end
   end
 
   def edit
     @post = Post.find(params[:id])
     @user = User.find(current_user.id)
-    render :edit
+
+    if @user.usertype > 20
+      render :edit
+    else
+      redirect_to index_post_path
+    end
   end
 
   def update
     @post = Post.find(params[:id])
-    
-    if params[:post][:image]
-      @post.image.attach(params[:post][:image])
-    end
-    
-    if @post.update(post_params)
-      redirect_to index_contributor_path, notice: '更新しました'
+    user = User.find(current_user.id)
+
+    if user.usertype > 20
+      if params[:post][:image]
+        @post.image.attach(params[:post][:image])
+      end
+      if @post.update(post_params)
+        redirect_to index_contributor_path, notice: '更新しました'
+      else
+        render :edit, status: :unprocessable_entity
+      end
     else
-      render :edit, status: :unprocessable_entity
+      redirect_to index_post_path
     end
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to index_post_path, notice: '削除しました'
+    user = User.find(current_user.id)
+    
+    if user.usertype > 20
+      @post = Post.find(params[:id])
+      @post.destroy
+      redirect_to index_post_path, notice: '削除しました'
+    else
+      redirect_to index_post_path
+    end
+
   end
 
   def show
@@ -109,42 +136,56 @@ class PostsController < ApplicationController
     user = User.find(current_user.id)
     @posts = []
 
-    if user.usertype > 80
-      all_posts.each do |post|
-        @posts << post
-      end
-    else
-      all_posts.each do |post|
-        @contributor = Contributor.find(post.contributor_id)
-        if @contributor.user_id == current_user.id
+    if user.usertype > 20
+      if user.usertype > 80
+        all_posts.each do |post|
           @posts << post
         end
+        render :index_reservation_holder
+      else
+        all_posts.each do |post|
+          @contributor = Contributor.find(post.contributor_id)
+          if @contributor.user_id == current_user.id
+            @posts << post
+          end
+        end
+        render :index_reservation_holder
       end
+    else
+      redirect_to index_post_path
     end
-
-    render :index_reservation_holder
   end
 
   def show_reservation_holder
     @post = Post.find(params[:id])
+    user = User.find(current_user.id)
     all_orders = Order.all
     @payment_price = 0
     @number_of_participants = 0
     @users = []
     @orders = []
 
-    all_orders.each do |order|
-      if order.post_id == @post.id
-        @users << User.find(order.user_id)
-        @orders << order
+    if user.usertype > 20
+      all_orders.each do |order|
+        if order.post_id == @post.id
+          @users << User.find(order.user_id)
+          @orders << order
 
-        payment_price = @payment_price
-        @payment_price = order.results * @post.price + payment_price
+          payment_price = @payment_price
+          @payment_price = order.results * @post.price + payment_price
 
-        number_of_participants = @number_of_participants
-        @number_of_participants = order.results + number_of_participants
+          number_of_participants = @number_of_participants
+          @number_of_participants = order.results + number_of_participants
+        end
       end
+      render :show_reservation_holder
+    else
+      redirect_to index_post_path
     end
+  end
+
+  def show_terms_of_use
+    render :show_terms_of_use
   end
 
   private

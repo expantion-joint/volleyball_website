@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   delete 'posts/destroy/:id', to: 'posts#destroy', as: 'destroy_post' # post.id
   get 'posts/index_reservation_holder', to: 'posts#index_reservation_holder', as: 'index_post_reservation_holder'
   get 'posts/show_reservation_holder/:id', to: 'posts#show_reservation_holder', as: 'show_post_reservation_holder' # post.id
+  get 'posts/show_terms_of_use', to: 'posts#show_terms_of_use', as: 'show_post_terms_of_use'
   
   # order
   get 'orders/index', to: 'orders#index', as: 'index_order'

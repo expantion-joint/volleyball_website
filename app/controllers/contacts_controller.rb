@@ -24,29 +24,46 @@ class ContactsController < ApplicationController
 
   def edit
     @contact = Contact.find(params[:id])
-    render :edit
+    user = User.find(current_user.id)
+
+    if user.usertype > 90
+      render :edit
+    else
+      redirect_to index_post_path
+    end
   end
 
   def update
     @contact = Contact.find(params[:id])
+    user = User.find(current_user.id)
     
-    if @contact.update(contact_params)
-      begin
-        ContactMailer.contact_mail(@contact).deliver_now
-        redirect_to :back, notice: 'メールが送信されました'
-      rescue => e
-        puts "An error occurred: #{e.message}"
-        render :edit, alert: 'メールの送信中にエラーが発生しました。'
+    if user.usertype > 90
+      if @contact.update(contact_params)
+        begin
+          ContactMailer.contact_mail(@contact).deliver_now
+          redirect_to :back, notice: 'メールが送信されました'
+        rescue => e
+          puts "An error occurred: #{e.message}"
+          render :edit, alert: 'メールの送信中にエラーが発生しました。'
+        end
+      else
+        render :edit, status: :unprocessable_entity
       end
     else
-      render :edit, status: :unprocessable_entity
+      redirect_to index_post_path
     end
   end
 
   def destroy
     @contact = Contact.find(params[:id])
-    @contact.destroy
-    redirect_to index_contact_path, notice: '問い合わせを削除しました'
+    user = User.find(current_user.id)
+
+    if user.usertype > 90
+      @contact.destroy
+      redirect_to index_contact_path, notice: '問い合わせを削除しました'
+    else
+      redirect_to index_post_path
+    end
   end
 
   private

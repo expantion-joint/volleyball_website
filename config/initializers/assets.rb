@@ -12,4 +12,7 @@ Rails.application.config.assets.version = "1.0"
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
 # 追加（swiper）
+# 読み込みのrootディレクトリとして、node_modulesというディレクトリを追加する
+# 通常は、import Swiper from "../../node_modules/swiper";と記載する必要があるが、
+# import Swiper from "swiper";と記載すれば読み込めるようになる
 Rails.application.config.assets.paths << Rails.root.join('node_modules')

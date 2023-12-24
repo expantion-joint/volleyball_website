@@ -50,8 +50,24 @@
         <%= f.hidden_field :usertype, value: 11 %>
       </div>
 
+      <!--　利用規約 -->
+      <div class="device-image-container">
+        <%= image_tag '1-8.png' ,class: "device-image" %>
+        <%= image_tag '2-8.png' ,class: "device-image" %>
+        <%= image_tag '3-8.png' ,class: "device-image" %>
+        <%= image_tag '4-8.png' ,class: "device-image" %>
+        <%= image_tag '5-8.png' ,class: "device-image" %>
+        <%= image_tag '6-8.png' ,class: "device-image" %>
+        <%= image_tag '7-8.png' ,class: "device-image" %>
+        <%= image_tag '8-8.png' ,class: "device-image" %>
+      </div>
+
+      <p></p>
+
+      <span>利用規約をすべてご確認ください。アカウント登録した時点で利用規約に同意したものとさせていただきます。</span>
+
       <div class="actions">
-        <%= f.submit "登録" %>
+        <%= f.submit "利用規約に同意して登録" %>
       </div>
     <% end %>
 
