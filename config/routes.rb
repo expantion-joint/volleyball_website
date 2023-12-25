@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'posts/index_reservation_holder', to: 'posts#index_reservation_holder', as: 'index_post_reservation_holder'
   get 'posts/show_reservation_holder/:id', to: 'posts#show_reservation_holder', as: 'show_post_reservation_holder' # post.id
   get 'posts/show_terms_of_use', to: 'posts#show_terms_of_use', as: 'show_post_terms_of_use'
+  post 'posts/back', to: 'posts#back', as: 'back_post'
   
   # order
   get 'orders/index', to: 'orders#index', as: 'index_order'

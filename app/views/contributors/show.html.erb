@@ -1,6 +1,9 @@
 <div class="gp-back-to-index-container">
   <div class="gp-back-to-index-button">
-    <%= link_to "イベント詳細に戻る", show_post_path(params[:id]), class: "gp-back-to-index-button-text"%>
+    <!-- <%= link_to "イベント詳細に戻る", show_post_path(params[:id]), class: "gp-back-to-index-button-text"%>-->
+    <%= link_to :back do %>
+      <button class="gp-back-to-index-button-text">イベント詳細に戻る</button>
+    <% end %>
   </div>
 </div>
 

@@ -124,13 +124,18 @@ class OrdersController < ApplicationController
   def update_reservation_holder
     @order = Order.find(params[:id])
     @order.payment_status = "支払済"
-    
-    if @order.update(order_params_without_id)
-      flash[:notice] = "登録しました"
-      redirect_back(fallback_location: index_post_reservation_holder_path)
+    user = User.find(current_user.id)
+
+    if user.usertype > 20
+      if @order.update(order_params_without_id)
+        flash[:notice] = "登録しました"
+        redirect_back(fallback_location: index_post_reservation_holder_path)
+      else
+        flash[:alert] = "登録に失敗しました"
+        redirect_back(fallback_location: index_post_reservation_holder_path)
+      end
     else
-      flash[:alert] = "登録に失敗しました"
-      redirect_back(fallback_location: index_post_reservation_holder_path)
+      redirect_to index_post_path
     end
   end
 

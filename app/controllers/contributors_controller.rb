@@ -11,52 +11,78 @@ class ContributorsController < ApplicationController
       all_posts.each do |post|
         @posts << post
       end
+      render :index
     else
-      all_posts.each do |post|
-        @contributor = Contributor.find(post.contributor_id)
-        if @contributor.user_id == current_user.id
-          @posts << post
+      if user.usertype > 20
+        all_posts.each do |post|
+          @contributor = Contributor.find(post.contributor_id)
+          if @contributor.user_id == current_user.id
+            @posts << post
+          end
         end
+        render :index
+      else
+        redirect_to index_post_path
       end
     end
   end
 
   def new
-    @contributor = Contributor.new
-    render :new
+    user = User.find(current_user.id)
+    if user.usertype > 20
+      @contributor = Contributor.new
+      render :new
+    else
+      redirect_to index_post_path
+    end
   end
 
   def create
     @contributor = Contributor.new(contributor_params)
     @user = User.find(@contributor.user_id)
+    user = User.find(current_user.id)
    
     if params[:contributor][:image]
       @contributor.image.attach(params[:contributor][:image])
     end
 
-    if @contributor.save
-      redirect_to index_post_path, notice: '登録しました'
+    if user.usertype > 20 
+      if @contributor.save
+        redirect_to index_post_path, notice: '登録しました'
+      else
+        render :new, status: :unprocessable_entity
+      end
     else
-      render :new, status: :unprocessable_entity
+      redirect_to index_post_path
     end
   end
 
   def edit
-    @contributor = Contributor.find_by(user_id: current_user.id)
-    render :edit
+    user = User.find(current_user.id)
+    if user.usertype > 20 
+      @contributor = Contributor.find_by(user_id: current_user.id)
+      render :edit
+    else
+      redirect_to index_post_path
+    end
   end
 
   def update
     @contributor = Contributor.find_by(user_id: current_user.id)
-    
+    user = User.find(current_user.id)
+
     if params[:contributor][:image]
       @contributor.image.attach(params[:contributor][:image])
     end
     
-    if @contributor.update(contributor_params)
-      redirect_to index_post_path, notice: '更新しました'
+    if user.usertype > 20 
+      if @contributor.update(contributor_params)
+        redirect_to index_post_path, notice: '更新しました'
+      else
+        render :edit, status: :unprocessable_entity
+      end
     else
-      render :edit, status: :unprocessable_entity
+      redirect_to index_post_path
     end
   end
 
@@ -68,8 +94,13 @@ class ContributorsController < ApplicationController
 
   def destroy
     @contributor = Contributor.find(params[:id])
-    @contributor.destroy
-    redirect_to index_post_path, notice: '投稿者アカウントを削除しました'
+    user = User.find(current_user.id)
+    if user.usertype > 20 
+      @contributor.destroy
+      redirect_to index_post_path, notice: '投稿者アカウントを削除しました'
+    else
+      redirect_to index_post_path
+    end
   end
 
   private
