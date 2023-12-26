@@ -34,7 +34,7 @@
             <td class="td-admins-user width-email"> <%= user.email %></td>
             <td class="td-admins-user width-gender"> <%= user.sex %></td>
             <td class="td-admins-user width-birthday"> <%= user.birthday %></td>
-            <td class="td-admins-user width-type"> <%= f.text_field :usertype, value: user.usertype, class: 'form-control' %></td>
+            <td class="td-admins-user width-type"> <%= f.number_field :usertype, value: user.usertype, min: 0, class: 'form-control no-spin' %></td>
             <td class="td-admins-user width-update"> <%= f.submit '更新', class: 'admin-user-button admin-user-background-blue admin-user-button-text' %></td>
           </tr>
         <% end %>

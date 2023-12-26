@@ -66,6 +66,16 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @user = User.find(current_user.id)
+    @orders = Order.all
+
+    total = 0
+    @orders.each do |order|
+      if order.post_id == @post.id
+        total = total + order.number_of_orders
+      end
+    end
+
+    @total = total
 
     if @user.usertype > 20
       render :edit

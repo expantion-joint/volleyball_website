@@ -45,7 +45,8 @@
       <p></p>
 
       <div class="button-group">
-        <%= f.submit '送信する', class: 'gp-button gp-background-blue gp-button-text' %>
+        <%= link_to 'お問い合わせを削除する', destroy_contact_path(@contact), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "gp-button gp-background-blue gp-button-text" %>
+        <%= f.submit '送信する', class: 'gp-button gp-background-orange gp-button-text' %>
       </div>
     
     <% end %>

@@ -316,6 +316,13 @@
   padding: 10px;
 }
 
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield;
+}
+
 .form-name-control {
   width: 140px;
   border-radius: 8px;

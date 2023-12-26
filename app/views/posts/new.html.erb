@@ -87,7 +87,7 @@
       <div class="form-group">
         <%= f.label "募集人数", class: 'form-label' %>
         <div class="form-side-by-side-group">
-          <%= f.text_field :recruitment_numbers, min: 1, class: 'form-number-control' %>
+          <%= f.number_field :recruitment_numbers, min: 1, class: 'form-number-control no-spin' %>
           <span class='form-label'>名</span>
         </div>
       </div>
@@ -95,7 +95,7 @@
       <div class="form-group">
         <%= f.label "価格", class: 'form-label' %>
         <div class="form-side-by-side-group">
-          <%= f.text_field :price, class: 'form-number-control' %>
+          <%= f.number_field :price, min: 0, class: 'form-number-control no-spin' %>
           <span class='form-label'>円</span>
         </div>
       </div>

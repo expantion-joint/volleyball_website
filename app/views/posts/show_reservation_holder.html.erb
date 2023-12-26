@@ -38,11 +38,11 @@
             <td class="td-reservation-user width-reservation-number_of_orders"> <%= order.number_of_orders %></td>
             <td class="td-reservation-user width-reservation-price"> <%= @post.price * order.number_of_orders %>円</td>
             <% if order.payment_status == "支払済" %>
-              <td class="td-reservation-user width-reservation-results"> <%= f.text_field :results, value: order.results, class: 'form-control' %></td>
+              <td class="td-reservation-user width-reservation-results"> <%= f.number_field :results, value: order.results, min: 0, class: 'form-control no-spin' %></td>
               <td class="td-reservation-user width-reservation-update"> <%= f.submit '登録', class: 'reservation-button reservation-background-blue reservation-button-text' %></td>
               <td class="td-reservation-user width-reservation-payment_status"> <%= order.payment_status %></td>
             <% else %>
-              <td class="td-reservation-user width-reservation-results"> <%= f.text_field :results, value: order.number_of_orders, class: 'form-control' %></td>
+              <td class="td-reservation-user width-reservation-results"> <%= f.number_field :results, value: order.number_of_orders, min: 0, class: 'form-control no-spin' %></td>
               <td class="td-reservation-user width-reservation-update"> <%= f.submit '登録', class: 'reservation-button reservation-background-blue reservation-button-text' %></td>
               <td class="td-reservation-user width-reservation-payment_status"> <%= "未払い" %></td>
             <% end %>
