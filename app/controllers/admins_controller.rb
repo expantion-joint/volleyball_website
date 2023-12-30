@@ -2,14 +2,32 @@ class AdminsController < ApplicationController
 
   before_action :authenticate_user!
 
+  def input_password
+    render :input_password
+  end
+
+  def confirm_password
+    if params[:confirm_password] == ENV['ADMIN_PASSWORD']
+      session[:confirm] = "Confirmed"
+      redirect_to edit_all_user_admin_path, notice: 'パスワードを確認しました'
+    else
+      redirect_to input_password_admin_path, alert: 'パスワードが違います'
+    end
+  end
+
   def edit_all_user
     @users = User.all
     user = User.find(current_user.id)
     
-    if user.usertype > 90
-      render :edit_all_user
+    if session[:confirm] == "Confirmed"
+      session.delete(:confirm)
+      if user.usertype > 90
+        render :edit_all_user
+      else
+        redirect_to index_post_path
+      end
     else
-      redirect_to index_post_path
+      render :input_password
     end
 
   end
@@ -20,9 +38,10 @@ class AdminsController < ApplicationController
     
     if user.usertype > 90
       if @user.update(user_params)
-          redirect_to edit_all_user_admin_path, notice: '更新しました'
+        session[:confirm] = "Confirmed"
+        redirect_to edit_all_user_admin_path, notice: '更新しました'
       else
-          render :edit_all_user, status: :unprocessable_entity
+        render :edit_all_user, status: :unprocessable_entity
       end
     else
       redirect_to index_post_path
@@ -33,6 +52,10 @@ class AdminsController < ApplicationController
   
   def user_params
     params.require(:user).permit(:name, :email, :usertype, :sex, :birthday)
+  end
+
+  def before_confrim_password
+    render :input_password
   end
 
 end

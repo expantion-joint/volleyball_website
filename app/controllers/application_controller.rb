@@ -9,8 +9,15 @@ class ApplicationController < ActionController::Base
   # devise
   protected
   def configure_permitted_parameters
+    users = ["default"]
+    users = User.all
+    if users.empty?
+      @usertype_default = 91
+    else
+      @usertype_default = 11
+    end
     devise_parameter_sanitizer.permit(:sign_up, keys:[:name, :sex, :birthday, :usertype])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :sex, :birthday, :usertype])
+    devise_parameter_sanitizer.permit(:account_update, keys:[:name, :sex, :birthday, :usertype])
   end
 
   def contributor_verification
