@@ -76,3 +76,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# 追記
+group :production do
+  gem 'unicorn'
+end
