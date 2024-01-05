@@ -26,15 +26,9 @@ test:
   <<: *default
   database: rails
 
-# production:
-#   <<: *default
-#   database: rails
-#   username: <%= ENV['DB_USERNAME'] %>
-#   password: <%= ENV['DB_PASSWORD'] %>
-
 production:
   <<: *default
-  database: together_production
-  username: root
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  socket: /var/lib/mysql/mysql.sock
+  # database: rails
+  database: database-2
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
