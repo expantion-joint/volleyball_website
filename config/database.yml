@@ -29,6 +29,6 @@ test:
 production:
   <<: *default
   # database: rails
-  database: database-2
+  database: together_production
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
