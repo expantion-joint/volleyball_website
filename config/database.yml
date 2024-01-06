@@ -32,3 +32,4 @@ production:
   database: together_production
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
