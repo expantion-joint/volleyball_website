@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   post 'admins/edit_all_user/:id', to: 'admins#update_all_user', as: 'update_all_user_admin' # post.id
   get 'admins/input_password', to: 'admins#input_password', as: 'input_password_admin'
   post 'admins/input_password', to: 'admins#confirm_password', as: 'confirm_password_admin'
+  delete 'admins/destroy/:id', to: 'admins#destroy', as: 'destroy_admin' # user.id
   
   # information
   get 'informations/index', to: 'informations#index', as: 'index_information'

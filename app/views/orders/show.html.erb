@@ -93,5 +93,65 @@
 
     <span class="show-text">予約終了日時：<%= @post.posting_end_time.strftime("%Y年%m月%d日%H時%M分") %> </span>
 
+    <p></p>
+
+    <% if @post.instagram_url.blank? && @post.line_url.blank? && @post.facebook_url.blank? && @post.youtube_url.blank? && @post.note_url.blank? && @post.x_url.blank? %>
+    <% else %>
+      <span class="show-heading">&nbsp;イベント関連のSNS&nbsp;</span>
+
+      <div class="sns-container">
+      
+        <% if @post.instagram_url.present? %>
+          <div class="sns-image-container">
+            <%= link_to @post.instagram_url, target: :_blank, rel: "noopener noreferrer" do%>
+              <%= image_tag 'instagram.png' ,class: "sns-img" %>
+            <% end %>
+          </div>
+        <% end %>
+        
+        <% if @post.line_url.present? %>
+          <div class="sns-image-container">
+            <%= link_to @post.line_url, target: :_blank, rel: "noopener noreferrer" do%>
+              <%= image_tag 'line.png' ,class: "sns-img" %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% if @post.facebook_url.present? %>
+          <div class="sns-image-container">
+            <%= link_to @post.facebook_url, target: :_blank, rel: "noopener noreferrer" do%>
+              <%= image_tag 'facebook.png' ,class: "sns-img" %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% if @post.x_url.present? %>
+          <div class="sns-image-container">
+            <%= link_to @post.x_url, target: :_blank, rel: "noopener noreferrer" do%>
+              <%= image_tag 'x.png' ,class: "sns-img" %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% if @post.note_url.present? %>
+          <div class="sns-image-container-note-youtube">
+            <%= link_to @post.note_url, target: :_blank, rel: "noopener noreferrer" do%>
+              <%= image_tag 'note.png' ,class: "sns-img" %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% if @post.youtube_url.present? %>
+          <div class="sns-image-container-note-youtube">
+            <%= link_to @post.youtube_url, target: :_blank, rel: "noopener noreferrer" do%>
+              <%= image_tag 'youtube.png' ,class: "sns-img" %>
+            <% end %>
+          </div>
+        <% end %>
+      
+      </div>
+
+    <% end %>
+
   </div>
 </div>

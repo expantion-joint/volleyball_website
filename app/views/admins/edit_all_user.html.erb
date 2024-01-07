@@ -4,8 +4,8 @@
   </div>
 </div>
 
-<div class="post-form-body">
-  <div class="post-form-container">
+<div class="admin-body">
+  <div class="admin-container">
     <h3>アカウント一覧</h3>
 
     <span>Type&emsp;0:予約不可/11:一般/21:投稿者/61:コアメン/81:創業者/91:管理者 </span>
@@ -18,6 +18,7 @@
         <th class="th-admins-user width-birthday"> <%= "生年月日" %></td>
         <th class="th-admins-user width-type"> <%= "Type" %></td>
         <th class="th-admins-user width-update"> <%= "更新" %></td>
+        <th class="th-admins-user width-destroy"> <%= "削除" %></td>
       </tr>
       <% @users.each do |user| %>
         <%= form_with(url: update_all_user_admin_path(user), model: user, local: true, method: :post, html: { class: 'post-form' }  ) do |f| %>
@@ -35,7 +36,8 @@
             <td class="td-admins-user width-gender"> <%= user.sex %></td>
             <td class="td-admins-user width-birthday"> <%= user.birthday %></td>
             <td class="td-admins-user width-type"> <%= f.number_field :usertype, value: user.usertype, min: 0, class: 'form-control no-spin' %></td>
-            <td class="td-admins-user width-update"> <%= f.submit '更新', class: 'admin-user-button admin-user-background-blue admin-user-button-text' %></td>
+            <td class="td-admins-user width-update"> <%= f.submit '更新', class: 'admin-user-button admin-user-background-orange admin-user-button-text' %></td>
+            <td class="td-admins-user width-update"> <%= link_to '削除', destroy_admin_path(user), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "admin-destroy-button-text admin-destroy-button admin-destroy-background-blue" %>
           </tr>
         <% end %>
       <% end %>

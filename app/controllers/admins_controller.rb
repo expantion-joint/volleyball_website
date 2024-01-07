@@ -48,6 +48,19 @@ class AdminsController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    user = User.find(current_user.id)
+    
+    if user.usertype > 90
+      @user.destroy
+      session[:confirm] = "Confirmed"
+      redirect_to edit_all_user_admin_path, notice: '削除しました'
+    else
+      redirect_to index_post_path
+    end
+  end
+
   private
   
   def user_params

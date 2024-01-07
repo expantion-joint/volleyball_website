@@ -1,10 +1,24 @@
+.admin-body {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+ }
+
+.admin-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 800px;
+  width: 95%;
+ }
+
 .td-admins-user{
   padding : 2px 4px;
   color:rgb(0, 0, 0);
   background-color: #f0f0f0;
   font-size: 14px;
   font-weight: 500;
-  white-space: wrap;
+  word-break : break-all;
 }
 
 .th-admins-user{
@@ -13,19 +27,19 @@
   background-color: #d8d8d8;
   font-size: 14px;
   font-weight: 500;
-  white-space: wrap;
+  word-break : break-all;
 }
 
 .width-userid{
-  width: 20px;
+  width: 30px;
 }
 
 .width-name{
-  width: calc((100% - 180px) * 0.3);
+  width: 70px;
 }
 
 .width-email{
-  width: calc((100% - 180px) * 0.7);
+  width: calc(100% - 290px);
 }
 
 .width-gender{
@@ -41,6 +55,10 @@
 }
 
 .width-update{
+  width: 30px;
+}
+
+.width-destroy{
   width: 30px;
 }
 
@@ -63,6 +81,29 @@
   cursor: pointer;
 }
 
-.admin-user-background-blue {
+.admin-user-background-orange {
   background: #FF8A00;
+}
+
+.admin-destroy-button-text {
+  color: #FFF;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.admin-destroy-button {
+  padding: 6px 5px;
+  align-items: center;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.admin-destroy-background-blue {
+  background: #3566e5;
 }

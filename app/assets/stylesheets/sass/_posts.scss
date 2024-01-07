@@ -250,6 +250,8 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  color: #000000;
+  background-color: #ffffff;
 }
 
 .modal-text {
@@ -602,7 +604,7 @@
 /* ====================== header ======================= */
 .logo-container {
   position: relative;
-  top: -45px;
+  top: -50px;
   left: 10px;
   width: 160px;
   height: auto;
