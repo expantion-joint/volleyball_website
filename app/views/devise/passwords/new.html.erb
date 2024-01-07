@@ -7,13 +7,15 @@
         <%= render "devise/shared/error_messages", resource: resource %>
       </div>
 
+      <p class="gp-text-bold">パスワードを忘れたアカウントのメールアドレスを入力してください</p>
+
       <div class="field">
-        <%= f.label :パスワードを忘れたアカウントのメールアドレス, class: "label" %>
+        <%= f.label :メールアドレス, class: "label" %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"device-input-itme"  %>
       </div>
 
       <div class="actions">
-        <%= f.submit "パスワード変更のメールを送信する" %>
+        <%= f.submit "メールを送信する" %>
       </div>
   
     <% end %>
