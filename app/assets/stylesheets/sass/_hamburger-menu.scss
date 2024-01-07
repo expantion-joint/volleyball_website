@@ -12,7 +12,7 @@
   #menuToggle {
     position: relative;
     top: 25px;
-    left: calc(100% - 70px);   // 変更(30px → calc(100% - 70px))
+    left: calc(100% - 50px);   // 変更(30px → calc(100% - 50px))
     z-index: 1;
     user-select: none;
   }
@@ -103,4 +103,5 @@
 .font-menu {
   margin-top: -4px;
   font-size: 13px;
+  margin-left: -1px;
 }

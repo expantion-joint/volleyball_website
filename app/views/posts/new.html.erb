@@ -6,7 +6,7 @@
 
 <div class="post-form-body">
   <div class="post-form-container">
-    <h3>投稿内容を入力してください</h3>
+    <h3 class="h3">投稿内容を入力してください</h3>
     <%= form_with(url: create_post_path, model: @post, local: true, method: :post, html: { class: 'post-form' }  ) do |f| %>
       
       <% if @post.errors.any? %>
@@ -137,6 +137,40 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <p></p>
+
+      <span class="gp-text-bold">SNS等のURLを入力してください（任意）</span>
+
+      <div class="form-group-sns">
+        <%= f.label "Instagram"%>
+        <%= f.text_field :instagram_url, class: 'form-control' %>
+      </div>
+
+      <div class="form-group-sns">
+        <%= f.label "LINE"%>
+        <%= f.text_field :line_url, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group-sns">
+        <%= f.label "Facebook"%>
+        <%= f.text_field :facebook_url, class: 'form-control' %>
+      </div>
+
+      <div class="form-group-sns">
+        <%= f.label "Youtube"%>
+        <%= f.text_field :youtube_url, class: 'form-control' %>
+      </div>
+
+      <div class="form-group-sns">
+        <%= f.label "note"%>
+        <%= f.text_field :note_url, class: 'form-control' %>
+      </div>
+
+      <div class="form-group-sns">
+        <%= f.label "X(Twitter)"%>
+        <%= f.text_field :x_url, class: 'form-control' %>
       </div>
 
       <p></p>

@@ -12,7 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 95%;
   max-width: 1000px;
   padding: 10px;
   gap: 10px;
@@ -24,6 +24,11 @@
 .show-image-container {
   width: 198px;
   height: 198px;
+}
+
+.order-image-container {
+  width: 220px;
+  height: 220px;
 }
   
 .show-image {
@@ -48,7 +53,7 @@
 
 .td-post-show{
   width: calc(100% - 80px);
-  min-width: 300px;
+  min-width: 200px;
   padding : 2px 4px;
   color:rgb(0, 0, 0);
   background-color: #f0f0f0;
@@ -68,7 +73,7 @@
 
 .td-post-show-red{
   width: calc(100% - 80px);
-  min-width: 300px;
+  min-width: 200px;
   padding : 2px 4px;
   color:rgb(255, 0, 0);
   background-color: #f0f0f0;
@@ -82,7 +87,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  width: 95%;
   padding: 10px;
   border-radius: 5px;
   background: #ffffff;
@@ -159,6 +164,35 @@
   white-space: nowrap;
   font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+.sns-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  margin-bottom: 25px;
+  width: 100%;
+  height: auto;
+  flex-wrap: wrap;
+}
+
+.sns-image-container {
+  width: auto;
+  height: 40px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+}
+
+.sns-image-container-note-youtube {
+  width: auto;
+  height: 27px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+}
+
+.sns-img {
+  height: 100%;
 }
 
 /* ====================== modal ======================= */
@@ -288,6 +322,12 @@
   margin-top: 20px;
 }
 
+.form-group-sns {
+  display: flex;
+  flex-direction: column;
+  margin-top: 7px;
+}
+
 .form-side-by-side-group {
   display: flex;
   align-items: center;
@@ -320,7 +360,7 @@
 .no-spin::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
-    -moz-appearance: textfield;
+    //-moz-appearance: textfield;
 }
 
 .form-name-control {
@@ -331,6 +371,8 @@
 .form-select-control {
   width: 162px;
   position: relative;
+  color: #000000;
+  background-color: #ffffff;
 }
 
 .form-select-control::after {
@@ -350,6 +392,8 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  color: #000000;
+  background-color: #ffffff;
 }
 
 .form-date_select-control-date {
@@ -398,6 +442,8 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  color: #000000;
+  background-color: #ffffff;
 }
 
 .form-time_select-control-minute {
@@ -433,6 +479,8 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  color: #000000;
+  background-color: #ffffff;
 }
 
 .form-date_time_select-control-minute {
@@ -443,7 +491,7 @@
   position: absolute;
   content:'▼';
   top: 28%;
-  right: 2%;
+  right: 1%;
   color: #333;
   pointer-events: none;
 }
@@ -456,7 +504,7 @@
   position: absolute;
   content:'▼';
   top: 28%;
-  right: 21%;
+  right: 20%;
   color: #333;
   pointer-events: none;
 }
@@ -469,7 +517,7 @@
   position: absolute;
   content:'▼';
   top: 28%;
-  right: 44%;
+  right: 43%;
   color: #333;
   pointer-events: none;
 }
@@ -482,7 +530,7 @@
   position: absolute;
   content:'▼';
   top: 28%;
-  right: 60%;
+  right: 59%;
   color: #333;
   pointer-events: none;
 }
@@ -495,7 +543,7 @@
   position: absolute;
   content:'▼';
   top: 28%;
-  right: 81%;
+  right: 80%;
   color: #333;
   pointer-events: none;
 }
@@ -503,14 +551,17 @@
 .form-date_time_select-control-item {
   border: 1px solid lightgray;
   border-radius: 8px;
-  padding: 10px 30px 10px 10px;
+  padding: 10px 20px 10px 5px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  color: #000000;
+  background-color: #ffffff;
 }
 
 .form-label {
-  font-weight: bold;
+  //font-weight: bold;
+  font-weight: 500;
 }
 
 .form-control-file {
@@ -563,13 +614,13 @@
 
 .name-container{
   position: relative;
-  top: -22px;
-  left: calc(100% - 175px);
+  top: -25px;
+  left: calc(100% - 154px);
   display: flex;
   justify-content: center;
   align-items: center;
   width: 80px;
-  height: 13px;
+  height: 17px;
   font-size: 13px;
   font-weight: 600;
   white-space: nowrap;
@@ -587,7 +638,7 @@
   position: relative;
   font-size: 13px;
   top: 10px;
-  left: calc(100% - 160px);
+  left: calc(100% - 140px);
 }
 
 /* ====================== swiper ======================= */

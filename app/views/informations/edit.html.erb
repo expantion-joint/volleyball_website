@@ -6,7 +6,7 @@
 
 <div class="post-form-body">
   <div class="post-form-container">
-    <h3>お知らせを編集してください</h3>
+    <h3 class="h3">お知らせを編集してください</h3>
     <%= form_with(url: update_information_path, model: @information, local: true, method: :post, html: { class: 'post-form' }  ) do |f| %>
       
       <% if @information.errors.any? %>
@@ -39,9 +39,11 @@
         </div>
       </div>
 
+      <p></p>
+
       <div class="button-group">
-        <%= link_to '投稿を削除する', destroy_information_path(@information), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "gp-button gp-background-blue gp-button-text" %>
         <%= f.submit '更新する', class: 'gp-button gp-background-orange gp-button-text' %>
+        <%= link_to '投稿を削除する', destroy_information_path(@information), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "gp-button gp-background-blue gp-button-text" %>
       </div>
       
     <% end %>

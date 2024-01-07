@@ -6,7 +6,7 @@
 
 <div class="post-form-body">
   <div class="post-form-container">
-    <h3>投稿者情報を編集してください</h3>
+    <h3 class="h3">投稿者情報を編集してください</h3>
     <%= form_with(url: update_contributor_path, model: @contributor, local: true, method: :post, html: { class: 'post-form' }  ) do |f| %>
       
       <% if @contributor.errors.any? %>
@@ -39,8 +39,8 @@
       <p></p>
 
       <div class="button-group">
-        <%= f.submit '更新する', class: 'gp-button gp-background-orange gp-button-text' %>
-        <%= link_to '投稿者アカウントを削除する', destroy_contributor_path(@contributor), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "gp-button gp-background-blue gp-button-text" %>
+        <%= f.submit '更新', class: 'gp-button gp-background-orange gp-button-text' %>
+        <%= link_to '投稿者アカウントを削除', destroy_contributor_path(@contributor), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "gp-button gp-background-blue gp-button-text" %>
       </div>
 
       

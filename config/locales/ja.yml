@@ -29,6 +29,11 @@ ja:
         content: 'イベント詳細'
         price: '価格'
         category: 'イベント内容'
+        instagram_url: 'instagramのURL'
+        line_url: 'LINEのURL'
+        facebook_url: 'facebookのURL'
+        note_url: 'noteのURL'
+        x_url: 'X（旧ツイッター）のURL'
       contributor:
         name: '投稿者名'
         self_introduction: '自己紹介'
@@ -274,8 +279,9 @@ ja:
         subject: 'アカウントの登録方法'
       #        subject: 'Confirmation instructions'
       reset_password_instructions:
+        from:                       "イベント予約サイトTogether"
         subject:                    "パスワードの再設定【自動送信】"
-        title:                      "いつも当アプリケーションをご利用いただき、ありがとうございます。"
+        title:                      "イベント予約サイトTogetherをご利用いただき、ありがとうございます。"
         reset_password_explanation: "パスワードの変更を受け付けました。以下のリンクから変更できます。"
         reset_password_link:        "パスワードを変更する"
         please_ignore:              "※パスワードリセットの申請に心当たりがない場合は、以降の対応は不要となります。"

@@ -6,7 +6,7 @@
 
 <div class="post-form-body">
   <div class="post-form-container">
-    <h3>お知らせをアップロードしてください</h3>
+    <h3 class="h3">お知らせをアップロードしてください</h3>
     <%= form_with(url: create_information_path, model: @information, local: true, method: :post, html: { class: 'post-form' }  ) do |f| %>
       
       <% if @information.errors.any? %>
@@ -38,6 +38,8 @@
           <!--f.select :保存先のカラム名, [["選択肢１", "実際にDBに保存させる内容"], ["選択肢２", "実際にDBに保存させる内容"]], include_blank: "選択して下さい"-->
         </div>
       </div>
+
+      <p></p>
 
       <div class="button-group">
         <%= f.submit '投稿する', class: 'gp-button gp-background-blue gp-button-text' %>

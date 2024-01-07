@@ -6,7 +6,7 @@
 
 <div class="post-form-body">
   <div class="post-form-container">
-    <h3>イベント内容を編集してください</h3>
+    <h3 class="h3">イベント内容を編集してください</h3>
     <%= form_with(url: update_post_path, model: @post, local: true, method: :post, html: { class: 'post-form' }  ) do |f| %>
       
       <% if @post.errors.any? %>
@@ -78,6 +78,11 @@
         <%= f.label "開催場所", class: 'form-label' %>
         <%= f.text_field :venue, value: @post.venue, class: 'form-control' %>
       </div>
+
+      <div class="form-group">
+        <%= f.label "住所", class: 'form-label' %>
+        <%= f.text_field :address, value: @post.address, class: 'form-control' %>
+      </div>
         
       <div class="form-group">
         <%= f.label "募集人数", class: 'form-label' %>
@@ -136,15 +141,49 @@
 
       <p></p>
 
+      <span class="gp-text-bold">SNS等のURLを入力してください（任意）</span>
+
+      <div class="form-group-sns">
+        <%= f.label "Instagram"%>
+        <%= f.text_field :instagram_url, value: @post.instagram_url, class: 'form-control' %>
+      </div>
+
+      <div class="form-group-sns">
+        <%= f.label "LINE"%>
+        <%= f.text_field :line_url, value: @post.line_url, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group-sns">
+        <%= f.label "Facebook"%>
+        <%= f.text_field :facebook_url, value: @post.facebook_url, class: 'form-control' %>
+      </div>
+
+      <div class="form-group-sns">
+        <%= f.label "Youtube"%>
+        <%= f.text_field :youtube_url, value: @post.youtube_url, class: 'form-control' %>
+      </div>
+
+      <div class="form-group-sns">
+        <%= f.label "note"%>
+        <%= f.text_field :note_url, value: @post.note_url, class: 'form-control' %>
+      </div>
+
+      <div class="form-group-sns">
+        <%= f.label "X(Twitter)"%>
+        <%= f.text_field :x_url, value: @post.x_url, class: 'form-control' %>
+      </div>
+
+      <p></p>
+
       <div class="button-group">
         <% if @user.usertype > 90 %>
-          <%= link_to '投稿を削除する', destroy_post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "gp-button gp-background-blue gp-button-text" %>
           <%= f.submit '更新する', class: 'gp-button gp-background-orange gp-button-text' %>
+          <%= link_to '投稿を削除する', destroy_post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "gp-button gp-background-blue gp-button-text" %>
         <% else%>
+          <%= f.submit '更新する', class: 'gp-button gp-background-orange gp-button-text' %>
           <% if @post.posting_start_time > Time.zone.now %>
             <%= link_to '投稿を削除する', destroy_post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "gp-button gp-background-blue gp-button-text" %>
           <% end %>
-          <%= f.submit '更新する', class: 'gp-button gp-background-orange gp-button-text' %>
         <% end %>
       </div>
       

@@ -5,7 +5,7 @@ class ContactMailer < ApplicationMailer
     mail(
     to: @contact.email,
     bcc: ENV["ACTION_MAILER_USER"],
-    from: 'Festival Auction',
+    from: 'イベント予約サイトTogether',
     subject: 'お問い合わせに対する回答'
     )
   end

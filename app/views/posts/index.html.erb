@@ -46,9 +46,9 @@
               <% remaining_days = (post.posting_end_time - Time.zone.now).to_i / 1.day %>
               <% if remaining_days.floor == 0 %>
                 <!--<span class="gp-index-item-image-remaining_days"><%= post.posting_end_time.strftime("%m/%d %H:%M") %>まで</span>-->
-                <span class="gp-index-item-image-remaining_days">残り<%= ((post.posting_end_time - Time.zone.now)/3600).floor %>時間<%= (((post.posting_end_time - Time.zone.now)%3600)/60).floor %>分</span>
+                <span class="gp-index-image-remaining_days">残り<%= ((post.posting_end_time - Time.zone.now)/3600).floor %>時間<%= (((post.posting_end_time - Time.zone.now)%3600)/60).floor %>分</span>
               <% else %>
-                <span class="gp-index-item-image-remaining_days">募集期間:残り<%= remaining_days.floor %>日</span>
+                <span class="gp-index-image-remaining_days">募集期間:残り<%= remaining_days.floor %>日</span>
               <% end %>
             <% end %>
           </div>

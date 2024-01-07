@@ -6,7 +6,7 @@
 
 <div class="post-form-body">
   <div class="post-form-container">
-    <h3>投稿者の情報を入力してください</h3>
+    <h3 class="h3">投稿者の情報を入力してください</h3>
     <%= form_with(url: create_contributor_path, model: @contributor, local: true, method: :post, html: { class: 'post-form' }  ) do |f| %>
       
       <% if @contributor.errors.any? %>

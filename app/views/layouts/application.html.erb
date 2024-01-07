@@ -10,19 +10,18 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   
-  <!-- swiper-bundle.min.cssを読み込み -->
-  <!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/> -->
-  
   <!-- Style -->
   <link rel="stylesheet" href="<%= mix('/css/app.css') %>">
-  
-  <!-- swiper-bundle.min.jsを読み込み -->
-  <%# <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> %>
+
+  <!-- swiper -->
+  <script src="<%= mix('/js/swiper-bundle.min.js') %>"></script>
+  <script src="<%= mix('/js/swiper.js') %>"></script>
 
   <!-- Javascript -->
   <!-- <script src="<%= mix('/js/bootstrap.js') %>"></script> -->
   <script src="<%= mix('/js/turbo.js') %>"></script>
   <script src="<%= mix('/js/modal.js') %>"></script>
+
 
 </head>
 
@@ -181,9 +180,6 @@
     </div>
   </div>
   <!-- Javascript -->
-  <!-- swiper -->
-  <script src="<%= mix('/js/swiper-bundle.min.js') %>"></script>
-  <script src="<%= mix('/js/swiper.js') %>"></script>
   <script src="<%= mix('/js/app.js') %>"></script>
 </body>
 </html>
