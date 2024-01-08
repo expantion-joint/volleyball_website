@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order(event_date: :asc) # 開催日順に並び替え
     @orders = Order.all
     @informations = Information.all
     @remaining_array = []

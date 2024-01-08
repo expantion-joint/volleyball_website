@@ -209,7 +209,15 @@
 .gp-back-to-index-container {
   display: flex;
   margin-top: 10px;
-  margin-left: 20px;
+  margin-left: 2.5%;
+}
+
+@media (min-width: 1050px) {
+  .gp-back-to-index-container {
+    display: flex;
+    margin-top: 10px;
+    margin-left: calc((100vw - 1000px) * 0.5);
+  }
 }
 
 .gp-back-to-index-button {
