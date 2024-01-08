@@ -92,7 +92,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # 追加：devise
-  config.action_mailer.default_url_options = { host: 'http://46.51.253.104/' }
+  # config.action_mailer.default_url_options = { host: 'https://46.51.253.104/' }
+  config.action_mailer.default_url_options = { host: 'https://booking-together.com/' }
 
   # 追加：Gmailの設定
   config.action_mailer.raise_delivery_errors = true # メール送信時にエラーが発生した場合、エラーを表示
