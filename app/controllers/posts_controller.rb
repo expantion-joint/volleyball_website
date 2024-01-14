@@ -198,6 +198,35 @@ class PostsController < ApplicationController
     render :show_terms_of_use
   end
 
+  def index_new_copy
+    all_posts = Post.all
+    user = User.find(current_user.id)
+    @posts = []
+
+    if user.usertype > 20
+      all_posts.each do |post|
+        @contributor = Contributor.find(post.contributor_id)
+        if @contributor.user_id == current_user.id
+          @posts << post
+        end
+      end
+      render :index_new_copy
+    else
+      redirect_to index_post_path
+    end
+  end
+
+  def new_copy
+    @post = Post.find(params[:id])
+    @user = User.find(current_user.id)
+
+    if @user.usertype > 20
+      render :new_copy
+    else
+      redirect_to index_post_path
+    end
+  end
+
   private
   
   def post_params
