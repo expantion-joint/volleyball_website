@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loop: true,    // ループ
     speed: 3000,   // 少しゆっくり(デフォルトは300)
     autoplay: {    // 自動再生
-      delay: 5000, // 1000で1秒後に次のスライド
+      delay: 8000, // 1000で1秒後に次のスライド
       disableOnInteraction: false, // 矢印をクリックしても自動再生を止めない
     },
     // ページネーション
