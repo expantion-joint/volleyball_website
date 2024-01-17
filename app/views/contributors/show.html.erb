@@ -27,5 +27,12 @@
       <span> <%= safe_join(@contributor.self_introduction.split("\n"),tag(:br))%></span>
     </div>
 
+    <span class="show-heading">&nbsp;運営しているサークル・イベント&nbsp;</span>
+    <span class="gp-margin-10px"><%= @contributor.club_name1%></span>
+    <span class="gp-margin-5px"><%= @contributor.club_name2%></span>
+    <span class="gp-margin-5px"><%= @contributor.club_name3%></span>
+    <span class="gp-margin-5px"><%= @contributor.club_name4%></span>
+    <span class="gp-margin-5px"><%= @contributor.club_name5%></span>
+
   </div>
 </div>

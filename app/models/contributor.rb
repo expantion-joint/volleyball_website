@@ -3,6 +3,7 @@ class Contributor < ApplicationRecord
 
   validates :name, presence: true
   validates :self_introduction, presence: true
+  validates :club_name1, presence: true
 
   has_one_attached :image
 

@@ -34,9 +34,15 @@ ja:
         facebook_url: 'facebookのURL'
         note_url: 'noteのURL'
         x_url: 'X（旧ツイッター）のURL'
+        club_name: 'サークル・イベント名'
       contributor:
         name: '投稿者名'
         self_introduction: '自己紹介'
+        club_name1: '運営しているサークル・イベント名①' 
+        club_name2: '運営しているサークル・イベント名②' 
+        club_name3: '運営しているサークル・イベント名③' 
+        club_name4: '運営しているサークル・イベント名④' 
+        club_name4: '運営しているサークル・イベント名⑤' 
       order:
         number_of_orders: '予約数'
         results: '実績'

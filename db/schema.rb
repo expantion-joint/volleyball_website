@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_07_033714) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_17_124201) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_bin", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -55,6 +55,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_07_033714) do
     t.text "self_introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "club_name1"
+    t.string "club_name2"
+    t.string "club_name3"
+    t.string "club_name4"
+    t.string "club_name5"
     t.index ["user_id"], name: "index_contributors_on_user_id"
   end
 
@@ -99,6 +104,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_07_033714) do
     t.string "youtube_url"
     t.string "note_url"
     t.string "x_url"
+    t.string "club_name"
     t.index ["contributor_id"], name: "index_posts_on_contributor_id"
   end
 

@@ -13,6 +13,7 @@ class Post < ApplicationRecord
   validates :content, presence: true
   validates :price, presence: true, numericality: true
   validates :category, presence: true
+  validates :club_name, presence: true
 
   has_one_attached :image
 

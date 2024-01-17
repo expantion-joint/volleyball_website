@@ -34,9 +34,32 @@
       <div class="form-group">
         <%= f.label "イベント内容", class: 'form-label'  %>
         <div class="form-select-control">
-          <% choices = [["バレーボール", "バレーボール"], ["バトミントン", "バトミントン"], ["フットサル", "フットサル"], ["ハンドボール", "ハンドボール"], ["卓球", "卓球"], ["ドッジボール", "ドッジボール"], ["野球", "野球"], ["サッカー", "サッカー"], ["テニス", "テニス"], ["レクリエーション", "レクリエーション"], ["カラオケ", "カラオケ"], ["その他", "その他"]] %>
+          <% choices = [["バレーボール", "バレーボール"], ["バトミントン", "バトミントン"], ["フットサル", "フットサル"], ["ハンドボール", "ハンドボール"], ["卓球", "卓球"], ["ドッジボール", "ドッジボール"], ["野球", "野球"], ["サッカー", "サッカー"], ["テニス", "テニス"], ["レクリエーション", "レクリエーション"], ["カラオケ", "カラオケ"], ["セミナー", "セミナー"], ["その他", "その他"]] %>
           <%= f.select :category, options_for_select(choices, @post.category), {include_blank: "選択して下さい"}, {class: "form-select-control-item"} %>
         </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "サークル・イベント名", class: 'form-label'  %>
+        <div class="form-select-control-club_name">
+          <% if @user.usertype == 21%>
+            <% choices = [[@contributor.club_name1, @contributor.club_name1]] %>
+          <%end%>
+          <% if @user.usertype == 22%>
+            <% choices = [[@contributor.club_name1, @contributor.club_name1], [@contributor.club_name2, @contributor.club_name2]] %>
+          <%end%>
+          <% if @user.usertype == 23%>
+            <% choices = [[@contributor.club_name1, @contributor.club_name1], [@contributor.club_name2, @contributor.club_name2], [@contributor.club_name3, @contributor.club_name3]] %>
+          <%end%>
+          <% if @user.usertype == 24%>
+            <% choices = [[@contributor.club_name1, @contributor.club_name1], [@contributor.club_name2, @contributor.club_name2], [@contributor.club_name3, @contributor.club_name3], [@contributor.club_name4, @contributor.club_name4]] %>
+          <%end%>
+          <% if @user.usertype > 24%>
+            <% choices = [[@contributor.club_name1, @contributor.club_name1], [@contributor.club_name2, @contributor.club_name2], [@contributor.club_name3, @contributor.club_name3], [@contributor.club_name4, @contributor.club_name4], [@contributor.club_name5, @contributor.club_name5]] %>
+          <%end%>
+          <%= f.select :club_name, options_for_select(choices, @post.club_name), {include_blank: "選択して下さい"}, {class: "form-select-control-item"} %>
+        </div>
+        <!--f.select :保存先のカラム名, [["選択肢１", "実際にDBに保存させる内容"], ["選択肢２", "実際にDBに保存させる内容"]], include_blank: "選択して下さい"-->
       </div>
 
       <div class="form-group">

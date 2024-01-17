@@ -386,6 +386,22 @@
   pointer-events: none;
 }
 
+.form-select-control-club_name {
+  width: 300px;
+  position: relative;
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.form-select-control-club_name::after {
+  position: absolute;
+  content:'▼';
+  top: 28%;
+  right: 4%;
+  color: #333;
+  pointer-events: none;
+}
+
 .form-select-control-item {
   width: 100%;
   border: 1px solid lightgray;

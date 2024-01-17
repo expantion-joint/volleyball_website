@@ -32,9 +32,10 @@ class PostsController < ApplicationController
   end
   
   def new
-    user = User.find(current_user.id)
+    @user = User.find(current_user.id)
+    @contributor = Contributor.find_by(user_id: current_user.id)
 
-    if user.usertype > 20
+    if @user.usertype > 20
       @post = Post.new
       render :new
     else
@@ -44,7 +45,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    user = User.find(current_user.id)
+    @user = User.find(current_user.id)
     @contributor = Contributor.find_by(user_id: current_user.id)
     @post.contributor_id = @contributor.id
    
@@ -52,7 +53,7 @@ class PostsController < ApplicationController
       @post.image.attach(params[:post][:image])
     end
 
-    if user.usertype > 20
+    if @user.usertype > 20
       if @post.save
         redirect_to index_post_path, notice: '投稿しました'
       else
@@ -86,9 +87,9 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    user = User.find(current_user.id)
+    @user = User.find(current_user.id)
 
-    if user.usertype > 20
+    if @user.usertype > 20
       if params[:post][:image]
         @post.image.attach(params[:post][:image])
       end
@@ -103,9 +104,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    user = User.find(current_user.id)
+    @user = User.find(current_user.id)
     
-    if user.usertype > 20
+    if @user.usertype > 20
       @post = Post.find(params[:id])
       @post.destroy
       redirect_to index_post_path, notice: '削除しました'
@@ -143,11 +144,11 @@ class PostsController < ApplicationController
 
   def index_reservation_holder
     all_posts = Post.all
-    user = User.find(current_user.id)
+    @user = User.find(current_user.id)
     @posts = []
 
-    if user.usertype > 20
-      if user.usertype > 80
+    if @user.usertype > 20
+      if @user.usertype > 80
         all_posts.each do |post|
           @posts << post
         end
@@ -168,14 +169,14 @@ class PostsController < ApplicationController
 
   def show_reservation_holder
     @post = Post.find(params[:id])
-    user = User.find(current_user.id)
+    @user = User.find(current_user.id)
     all_orders = Order.all
     @payment_price = 0
     @number_of_participants = 0
     @users = []
     @orders = []
 
-    if user.usertype > 20
+    if @user.usertype > 20
       all_orders.each do |order|
         if order.post_id == @post.id
           @users << User.find(order.user_id)
@@ -200,10 +201,10 @@ class PostsController < ApplicationController
 
   def index_new_copy
     all_posts = Post.all
-    user = User.find(current_user.id)
+    @user = User.find(current_user.id)
     @posts = []
 
-    if user.usertype > 20
+    if @user.usertype > 20
       all_posts.each do |post|
         @contributor = Contributor.find(post.contributor_id)
         if @contributor.user_id == current_user.id
@@ -230,7 +231,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:title, :event_date, :venue, :event_start_time, :event_end_time, :posting_start_time, :posting_end_time, :address, :recruitment_numbers, :content, :price, :category, :instagram_url, :line_url, :facebook_url, :youtube_url, :note_url,:x_url, :image)
+    params.require(:post).permit(:title, :event_date, :venue, :event_start_time, :event_end_time, :posting_start_time, :posting_end_time, :address, :recruitment_numbers, :content, :price, :category, :instagram_url, :line_url, :facebook_url, :youtube_url, :note_url, :x_url, :club_name, :image)
   end
   
 end

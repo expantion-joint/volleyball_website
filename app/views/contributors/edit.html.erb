@@ -12,7 +12,7 @@
       <% if @contributor.errors.any? %>
         <ul>
           <% @contributor.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
+            <li class="gp-text-red">・<%= message %></li>
           <% end %>
         </ul>
       <% end %>
@@ -35,6 +35,44 @@
         <%= f.label "自己紹介", class: 'form-label' %>
         <%= f.text_area :self_introduction, value: @contributor.self_introduction, class: 'form-text-control' %>
       </div>
+
+      <% if @user.usertype > 21%>
+        <div class="form-group">
+          <%= f.label "運営しているサークル・イベント名①", class: 'form-label' %>
+          <%= f.text_field :club_name1, value: @contributor.club_name1, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "運営しているサークル・イベント名②（任意）", class: 'form-label' %>
+          <%= f.text_field :club_name2, value: @contributor.club_name2, class: 'form-control' %>
+        </div>
+
+        <% if @user.usertype > 22%>
+          <div class="form-group">
+            <%= f.label "運営しているサークル・イベント名③（任意）", class: 'form-label' %>
+            <%= f.text_field :club_name3, value: @contributor.club_name3, class: 'form-control' %>
+          </div>
+
+          <% if @user.usertype > 23%>
+            <div class="form-group">
+              <%= f.label "運営しているサークル・イベント名④（任意）", class: 'form-label' %>
+              <%= f.text_field :club_name4, value: @contributor.club_name4, class: 'form-control' %>
+            </div>
+
+            <% if @user.usertype > 24%>
+              <div class="form-group">
+                <%= f.label "運営しているサークル・イベント名⑤（任意）", class: 'form-label' %>
+                <%= f.text_field :club_name5, value: @contributor.club_name5, class: 'form-control' %>
+              </div>
+            <%end%>
+          <%end%>
+        <%end%>
+      <%else%>
+        <div class="form-group">
+          <%= f.label "運営しているサークル・イベント名", class: 'form-label' %>
+          <%= f.text_field :club_name1, value: @contributor.club_name1, class: 'form-control' %>
+        </div>
+      <%end%>
       
       <p></p>
 

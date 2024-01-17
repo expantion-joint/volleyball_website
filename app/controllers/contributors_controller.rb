@@ -28,8 +28,8 @@ class ContributorsController < ApplicationController
   end
 
   def new
-    user = User.find(current_user.id)
-    if user.usertype > 20
+    @user = User.find(current_user.id)
+    if @user.usertype > 20
       @contributor = Contributor.new
       render :new
     else
@@ -58,8 +58,8 @@ class ContributorsController < ApplicationController
   end
 
   def edit
-    user = User.find(current_user.id)
-    if user.usertype > 20 
+    @user = User.find(current_user.id)
+    if @user.usertype > 20 
       @contributor = Contributor.find_by(user_id: current_user.id)
       render :edit
     else
@@ -69,13 +69,13 @@ class ContributorsController < ApplicationController
 
   def update
     @contributor = Contributor.find_by(user_id: current_user.id)
-    user = User.find(current_user.id)
+    @user = User.find(current_user.id)
 
     if params[:contributor][:image]
       @contributor.image.attach(params[:contributor][:image])
     end
     
-    if user.usertype > 20 
+    if @user.usertype > 20 
       if @contributor.update(contributor_params)
         redirect_to index_post_path, notice: '更新しました'
       else
@@ -105,7 +105,7 @@ class ContributorsController < ApplicationController
 
   private
   def contributor_params
-    params.require(:contributor).permit(:name, :self_introduction, :image).merge(user_id: current_user.id)
+    params.require(:contributor).permit(:name, :self_introduction, :club_name1, :club_name2, :club_name3, :club_name4, :club_name5, :image).merge(user_id: current_user.id)
   end
 
 end
