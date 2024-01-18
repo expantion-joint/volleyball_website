@@ -4,7 +4,48 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.all.order(event_date: :asc) # 開催日順に並び替え
+
+    @address = params[:address]
+    @club_name = params[:club_name]
+    @category = params[:category]
+    @posts_address = []
+    @posts_address_club_name = []
+    @posts_address_club_name_category = []
+
+    # 開催日順に並び替え
+    @posts_all = Post.all.order(event_date: :asc)
+
+    # 住所で絞り込み
+    if @address == "---" || @address.blank?
+      @posts_address = @posts_all
+    else
+      @posts_address = @posts_all.where('address LIKE ?', "%#{@address}%")
+    end
+    
+    # サークル名で絞り込み
+    if @club_name == "---" || @address.blank?
+      @posts_address_club_name = @posts_address
+    else
+      @posts_address.each do |post|
+        if post.club_name == @club_name
+          @posts_address_club_name << post
+        end
+      end
+    end
+
+    # カテゴリで絞り込み
+    if @category == "---" || @address.blank?
+      @posts_address_club_name_category = @posts_address_club_name
+    else
+      @posts_address_club_name.each do |post|
+        if post.category == @category
+          @posts_address_club_name_category << post
+        end
+      end
+    end
+    
+    @posts = @posts_address_club_name_category
+
     @orders = Order.all
     @informations = Information.all
     @remaining_array = []
@@ -28,7 +69,38 @@ class PostsController < ApplicationController
       end
     end
 
+    # 選択肢作成
+    @clubs = ["---"]
+    @categories = ["---"]
+
+    @posts.each do |post|
+      result_club = ""
+      result_category = ""
+      @clubs.each do |club|
+        if post.club_name == club
+          result_club = "duplicate"
+        end
+      end
+      @categories.each do |category|
+        if post.category == category
+          result_category = "duplicate"
+        end
+      end
+      
+      if post.posting_start_time < Time.zone.now
+        if post.posting_end_time > Time.zone.now
+          if result_club != "duplicate"
+            @clubs << post.club_name
+          end 
+          if result_category != "duplicate"
+            @categories << post.category
+          end
+        end
+      end
+    end
+
     render :index
+
   end
   
   def new

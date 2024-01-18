@@ -721,19 +721,6 @@
   text-decoration: none;
 }
 
-.post-warning-container{
-  display: flex;
-  align-items: center;
-  width: 95%;
-  max-width: 1000px;
-  background-color: rgb(255, 255, 196);
-  border-radius: 5px;
-  padding: 8px;
-  color: rgb(0, 0, 0);
-  font-size: 12px;
-  border: 1px solid rgb(177, 186, 1);
-}
-
 /* ================== notice and alert =================== */
 .notice_and_alert-container{
   display: flex;
@@ -874,4 +861,104 @@
   border: none;
   margin-top: 20px;
   cursor: pointer;
+}
+
+/* ====================== search ====================== */
+.search-container {
+  position: relative;
+  display: flex;
+  width: 350px;
+  height: 65px;
+  justify-content: center;
+}
+
+// .search-container::after {
+//   position: absolute;
+//   content:'▼';
+//   top: 19%;
+//   right: 62%;
+//   color: #333;
+//   pointer-events: none;
+// }
+
+.search-form-upper-container{
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+// .search-form-upper-container::after {
+//   position: absolute;
+//   content:'▼';
+//   top: 24%;
+//   right: 5%;
+//   color: #333;
+//   pointer-events: none;
+// }
+
+.search-form-lower-container{
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  position: relative;
+}
+
+// .search-form-lower-container::after {
+//   position: absolute;
+//   content:'▼';
+//   top: 24%;
+//   right: 20%;
+//   color: #333;
+//   pointer-events: none;
+// }
+
+
+.search-form select {
+  height: 30px;
+  padding: 5px 5px;
+  border: none;
+  box-sizing: border-box;
+  outline: none;
+  background-color: #e6edf3;
+  font-size: 14px;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-left: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #000000;
+}
+
+.search-form-category {
+  width: 100px;
+}
+
+.search-form-address {
+  width: 80px;
+}
+
+.search-form-club_name {
+  width: 204px;
+}
+
+.search-form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: #009d00;
+  cursor: pointer;
+}
+
+.search-form button::after {
+  width: 20px;
+  height: 20px;
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%20%3Cpath%20d%3D%22M23.7%2020.8%2019%2016.1c-.2-.2-.5-.3-.8-.3h-.8c1.3-1.7%202-3.7%202-6C19.5%204.4%2015.1%200%209.7%200S0%204.4%200%209.7s4.4%209.7%209.7%209.7c2.3%200%204.3-.8%206-2v.8c0%20.3.1.6.3.8l4.7%204.7c.4.4%201.2.4%201.6%200l1.3-1.3c.5-.5.5-1.2.1-1.6zm-14-5.1c-3.3%200-6-2.7-6-6s2.7-6%206-6%206%202.7%206%206-2.6%206-6%206z%22%20fill%3D%22%23fff%22%3E%3C%2Fpath%3E%20%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  content: '';
 }

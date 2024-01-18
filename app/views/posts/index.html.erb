@@ -19,13 +19,22 @@
     </div>
   </div>
 
-  <!-- 
-  <div class="post-warning-container">
-    <span>個人参加型のイベントの質は、参加者のモラルに左右されます。皆さんが心地よくイベントに参加できるよう、
-      <span class="gp-text-bold gp-text-red">モラルが欠落したユーザーのアカウントには制限をかけます。</span>
-    </span>
+  <div class="search-container">
+    <%= form_with url: index_post_path, class: "search-form", method: :get, local: true do |form| %>
+      <div class="search-form-upper-container">
+        <span class="gp-font-size-14px">開催場所</span>
+        <%= form.select :address, options_for_select(Post.prefecture_lists.keys, selected: @address), {}, {class: "search-form-address"} %>
+        <span class="gp-font-size-14px">イベント内容</span>
+        <%= form.select :category, options_for_select(@categories, selected: @category), {}, {class: "search-form-category"} %>
+      </div>
+      <div class="search-form-lower-container">
+        <span class="gp-font-size-14px">サークル名</span>
+        <%= form.select :club_name, options_for_select(@clubs, selected: @club_name), {}, {class: "search-form-club_name"}  %>
+        <button type="submit" aria-label="検索"></button>
+      </div>
+      
+    <% end %>
   </div>
-  -->
 
   <h3 class="gp-index-heading">イベント一覧</h3>
 
