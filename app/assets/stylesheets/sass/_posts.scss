@@ -762,7 +762,6 @@
 /* ============== show_reservation_holder =============== */
 .td-reservation-user{
   padding : 2px 4px;
-  color:rgb(0, 0, 0);
   background-color: #f0f0f0;
   font-size: 14px;
   font-weight: 500;
@@ -780,30 +779,41 @@
 
 .width-reservation-userid{
   width: 20px;
+  color:rgb(0, 0, 0);
 }
 
 .width-reservation-name{
   width: calc(100% - 240px);
+  color:rgb(0, 0, 0);
 }
 
 .width-reservation-number_of_orders{
   width: 40px;
+  color:rgb(0, 0, 0);
 }
 
 .width-reservation-price{
   width: 60px;
+  color:rgb(0, 0, 0);
 }
 
 .width-reservation-results{
   width: 40px;
+  color:rgb(0, 0, 0);
 }
 
 .width-reservation-update{
   width: 30px;
+  color:rgb(0, 0, 0);
 }
 
 .width-reservation-payment_status{
   width: 50px;
+} 
+
+.width-reservation-payment_status-red{
+  width: 50px;
+  color:rgb(255, 0, 0);
 } 
 
 .reservation-button-text {

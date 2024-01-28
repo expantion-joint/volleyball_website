@@ -16,6 +16,11 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
 
     if @contact.save
+      begin
+        ContactMailer.contact_create_mail(@contact).deliver_now
+      rescue => e
+        puts "An error occurred: #{e.message}"
+      end
       redirect_to index_post_path, notice: 'お問い合わせを送信しました'
     else
       render :new, status: :unprocessable_entity

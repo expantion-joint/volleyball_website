@@ -10,4 +10,13 @@ class ContactMailer < ApplicationMailer
     )
   end
 
+  def contact_create_mail(contact)
+    @contact = contact
+    mail(
+    to: ENV["ACTION_MAILER_USER"],
+    from: 'イベント予約サイトTogether',
+    subject: 'お問い合わせ内容'
+    )
+  end
+
 end
