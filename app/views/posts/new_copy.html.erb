@@ -41,7 +41,7 @@
       </div>
 
       <div class="form-group">
-        <%= f.label "サークル・イベント名", class: 'form-label'  %>
+        <%= f.label "サークル名", class: 'form-label'  %>
         <div class="form-select-control-club_name">
           <% if @user.usertype == 21%>
             <% choices = [[@contributor.club_name1, @contributor.club_name1]] %>
