@@ -25,7 +25,11 @@
               <% else %>
                 <%= image_tag 'no_image.png' ,class: "gp-index-image" %>
               <% end %>
-              <span class="gp-index-image-booking_number"><%= order.number_of_orders %>名予約済</span>
+              <% if post.unit.blank? %>
+                <span class="gp-index-image-booking_number"><%= order.number_of_orders %>名予約済</span>
+              <% else %>
+                <span class="gp-index-image-booking_number"><%= order.number_of_orders %><%= post.unit %>予約済</span>
+              <% end %>
             </div>
 
             <div class="gp-index-item-list-container">

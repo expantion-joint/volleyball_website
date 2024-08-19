@@ -59,7 +59,11 @@
             <% if remaining == 0 %>
               <span class="gp-index-image-recruitment_number">SOLD&nbsp;OUT</span>
             <% else %>
-              <span class="gp-index-image-recruitment_number"><%= remaining %>名募集中</span>
+              <% if post.unit.blank? %>
+                <span class="gp-index-image-recruitment_number"><%= remaining %>名募集中</span>
+              <% else %>
+                <span class="gp-index-image-recruitment_number"><%= remaining %><%= post.unit%>募集中</span>
+              <% end %>
             <% end %>
             <% remaining_days = (post.posting_end_time - Time.zone.now).to_i / 1.day %>
             <% if remaining_days.floor == 0 %>
@@ -116,7 +120,11 @@
               <% if remaining == 0 %>
                 <span class="gp-index-image-recruitment_number">SOLD&nbsp;OUT</span>
               <% else %>
-                <span class="gp-index-image-recruitment_number"><%= remaining %>名募集中</span>
+                <% if post.unit.blank? %>
+                  <span class="gp-index-image-recruitment_number"><%= remaining %>名募集中</span>
+                <% else %>
+                  <span class="gp-index-image-recruitment_number"><%= remaining %><%= post.unit%>募集中</span>
+                <% end %>
               <% end %>
               <span class="gp-index-image-remaining_days">予約開始前</span>
             </div>

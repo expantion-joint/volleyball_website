@@ -232,14 +232,14 @@
   position: relative;
 }
 
-.modal-field-container::after {
-  position: absolute;
-  content:'▼';
-  top: 55%;
-  right: 32%;
-  color: #333;
-  pointer-events: none;
-}
+// .modal-field-container::after {
+//   position: absolute;
+//   content:'▼';
+//   top: 55%;
+//   right: 32%;
+//   color: #333;
+//   pointer-events: none;
+// }
 
 .modal-field {
   width: 120px;

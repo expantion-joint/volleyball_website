@@ -51,7 +51,7 @@ class PostsController < ApplicationController
     @remaining_array = []
     @open_informations = []
 
-    # 募集人数 - 予約数 ＝ 残り
+    # 募集数 - 予約数 ＝ 残り
     @posts.each do |post|
       total = 0
       @orders.each do |order|
@@ -202,7 +202,7 @@ class PostsController < ApplicationController
       @user.usertype = 11
     end
 
-    # 募集人数 - 予約数 ＝ 残り
+    # 募集数 - 予約数 ＝ 残り
     @orders.each do |order|
       if order.post_id == @post.id
         total = total + order.number_of_orders
@@ -305,7 +305,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:title, :event_date, :venue, :event_start_time, :event_end_time, :posting_start_time, :posting_end_time, :address, :recruitment_numbers, :content, :price, :category, :instagram_url, :line_url, :facebook_url, :youtube_url, :note_url, :x_url, :club_name, :image)
+    params.require(:post).permit(:title, :event_date, :venue, :event_start_time, :event_end_time, :posting_start_time, :posting_end_time, :address, :recruitment_numbers, :content, :price, :category, :instagram_url, :line_url, :facebook_url, :youtube_url, :note_url, :x_url, :club_name, :unit, :image)
   end
   
 end

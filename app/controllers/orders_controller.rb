@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
     @orders = Order.all
     total = 0
 
-    # 募集人数 - 予約数 ＝ 残り
+    # 募集数 - 予約数 ＝ 残り
     @orders.each do |order|
       if order.post_id == @post.id
         total = total + order.number_of_orders
@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
     @order.results = 0
 
     if @remaining < 0
-      flash[:alert] = "予約人数が募集人数を超えています"
+      flash[:alert] = "予約数が募集数を超えています"
       redirect_to show_post_path(params[:id])
     else
       if @appointment == "true"
@@ -73,7 +73,7 @@ class OrdersController < ApplicationController
       end
     end
 
-    # 募集人数 - 予約数 ＝ 残り
+    # 募集数 - 予約数 ＝ 残り
     @orders.each do |order|
       if order.post_id == @post.id
         total = total + order.number_of_orders
@@ -83,11 +83,11 @@ class OrdersController < ApplicationController
     @remaining = @post.recruitment_numbers - total - @order_params.number_of_orders + @order.number_of_orders
 
     if @remaining < 0
-      flash[:alert] = "予約人数が募集人数を超えています"
+      flash[:alert] = "予約数が募集数を超えています"
       redirect_to show_order_path(params[:id])
     else
       if @order.update(order_params)
-        redirect_to show_order_path(params[:id]), notice: '予約人数を変更しました'
+        redirect_to show_order_path(params[:id]), notice: '予約数を変更しました'
       else
         flash[:alert] = "予約に失敗しました"
         redirect_to show_order_path(params[:id])
@@ -109,7 +109,7 @@ class OrdersController < ApplicationController
       end
     end
 
-    # 募集人数 - 予約数 ＝ 残り
+    # 募集数 - 予約数 ＝ 残り
     @orders.each do |order|
       if order.post_id == @post.id
         total = total + order.number_of_orders

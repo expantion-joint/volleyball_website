@@ -112,10 +112,12 @@
       </div>
         
       <div class="form-group">
-        <%= f.label "募集人数", class: 'form-label' %>
+        <%= f.label "募集数", class: 'form-label' %>
         <div class="form-side-by-side-group">
           <%= f.number_field :recruitment_numbers, min: 1, class: 'form-number-control no-spin' %>
-          <span class='form-label'>名</span>
+          <div class="form-select-control">
+            <%= f.select :unit, [["名", "名"], ["組", "組"], ["チーム", "チーム"]], {include_blank: "選択して下さい"}, {class: "form-select-control-item"} %>
+          </div>
         </div>
       </div>
 

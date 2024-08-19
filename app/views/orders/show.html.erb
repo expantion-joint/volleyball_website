@@ -41,11 +41,19 @@
       </tr>
 
       <tr>
-        <th class=th-post-show>募集人数</th> <td class=td-post-show> <%= @post.recruitment_numbers %>名（残り<%= @remaining %>名）</td>
+        <% if @post.unit.blank? %>
+          <th class=th-post-show>募集数</th> <td class=td-post-show> <%= @post.recruitment_numbers %>名（残り<%= @remaining %>名）</td>
+        <% else %>
+          <th class=th-post-show>募集数</th> <td class=td-post-show> <%= @post.recruitment_numbers %><%= @post.unit %>（残り<%= @remaining %><%= @post.unit %>）</td>
+        <% end %>
       </tr>
 
       <tr>
-        <th class=th-post-show>予約人数</th> <td class=td-post-show-red> <%= @order.number_of_orders %>名</td>
+        <% if @post.unit.blank? %>
+          <th class=th-post-show>予約数</th> <td class=td-post-show-red> <%= @order.number_of_orders %>名</td>
+        <% else %>
+          <th class=th-post-show>予約数</th> <td class=td-post-show-red> <%= @order.number_of_orders %><%= @post.unit %></td>
+        <% end %>
       </tr>
 
       <tr>
@@ -67,7 +75,7 @@
     </div>
 
     <!-- modal button -->
-    <button class="show-order-button show-order-button-text js-button" data-target="#modal<%= @post.id %>">予約人数を変更する</button>
+    <button class="show-order-button show-order-button-text js-button" data-target="#modal<%= @post.id %>">予約数を変更する</button>
 
     <!-- modal -->
     <div id="modal<%= @post.id %>" class="modal js-modal">
@@ -77,8 +85,12 @@
           <%= form_with(url: update_order_path(@post.id), model: @order, local: true, method: :post, html: { class: "post-form" } ) do |f| %>            
             
             <div class="modal-field-container">
-              <%= f.label "予約人数を入力してください", class: "modal-text" %>
-              <span class=modal-text><%= f.select :number_of_orders, [["キャンセル", 0], [1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7], [8, 8], [9, 9], [10, 10], [11, 11], [12, 12], [13, 13], [14, 14], [15, 15], [16, 16], [17, 17], [18, 18], [19, 19], [20, 20]], {}, {class: "modal-field"} %>&nbsp;名</span>
+              <%= f.label "予約数を入力してください", class: "modal-text" %>
+                <% if @post.unit.blank? %>
+                  <span class=modal-text><%= f.select :number_of_orders, [["キャンセル", 0],[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7], [8, 8], [9, 9], [10, 10], [11, 11], [12, 12], [13, 13], [14, 14], [15, 15], [16, 16], [17, 17], [18, 18], [19, 19], [20, 20]], {}, {class: "modal-field"} %>&nbsp;名</span>
+                <% else %>
+                  <span class=modal-text><%= f.select :number_of_orders, [["キャンセル", 0],[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7], [8, 8], [9, 9], [10, 10], [11, 11], [12, 12], [13, 13], [14, 14], [15, 15], [16, 16], [17, 17], [18, 18], [19, 19], [20, 20]], {}, {class: "modal-field"} %>&nbsp;<%= @post.unit %></span>
+                <% end %>
             </div>
                         
             <div class="modal-button-container">
