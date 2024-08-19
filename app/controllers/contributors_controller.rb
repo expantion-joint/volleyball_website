@@ -10,6 +10,7 @@ class ContributorsController < ApplicationController
     if user.usertype > 90
       all_posts.each do |post|
         @posts << post
+        @posts.sort_by! { |post| post.event_date }.reverse!
       end
       render :index
     else
@@ -18,6 +19,7 @@ class ContributorsController < ApplicationController
           @contributor = Contributor.find(post.contributor_id)
           if @contributor.user_id == current_user.id
             @posts << post
+            @posts.sort_by! { |post| post.event_date }.reverse!
           end
         end
         render :index
